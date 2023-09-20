@@ -15,7 +15,7 @@ console.log(path)
     <NavbarVue v-if="path != '/apps'" />
   </header>
 
-  <div class="px-[20px] md:px-[50px] lg:px-[100px] max-w-[640px] md:max-w-[960px] lg:max-w-[1500px] mx-auto">
+  <div>
     <RouterView />
   </div>
 </template>
