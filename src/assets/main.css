@@ -13,9 +13,9 @@
 }
 
 .recent-title {
-  @apply text-[#3F4254] text-[18px] font-semibold leading-[18px] tracking-[-0.18px]
+  @apply text-[#3F4254] truncate text-[18px] font-semibold leading-[18px] tracking-[-0.18px]
 }
 
 .recent-sub-title {
-  @apply text-[#A1A5B7] text-[14px] font-semibold leading-[14px]
+  @apply text-[#A1A5B7] truncate text-[14px] font-semibold leading-[14px]
 }
