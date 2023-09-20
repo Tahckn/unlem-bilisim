@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-row items-start ">
-        <AppsSidebar class="z-10 h-screen" />
+        <AppsSidebar class="h-screen" />
         <div class="flex flex-col w-full">
-            <AppsNavbar class="z-20" />
+            <AppsNavbar />
             <div class="flex">
                 <main
                     class="p-[20px] w-full h-[calc(100vh-65px)] overflow-auto gap-y-[30px] flex flex-col border border-[#F1F1F2] rounded-xl drop-shadow-md">
@@ -19,24 +19,37 @@
                             <img src="/assets/icons/attention.svg" alt="attention">
                         </div>
                     </div>
-                    <div class="flex justify-between flex-row gap-x-[30px]">
-                        <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
-                        <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
-                        <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
-                    </div>
-                    <div class="w-full rounded-xl border border-[#F1F1F2] drop-shadow-sm h-[287px]">
-                    </div>
-                    <div class="flex justify-between flex-row gap-x-[30px]">
-                        <div class=" rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
-                        <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
-                        <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
+                    <div class="mx-auto md:mx-0 flex flex-col gap-y-[30px]">
+                        <div class="flex justify-between flex-col gap-y-[30px]  md:flex-row gap-x-[30px]">
+                            <div
+                                class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[300px] md:w-[280px] lg:w-[331px] h-[287px]">
+                            </div>
+                            <div
+                                class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[300px] md:w-[280px] lg:w-[331px] h-[287px]">
+                            </div>
+                            <div
+                                class="rounded-xl hidden lg:inline-block border border-[#F1F1F2] drop-shadow-sm w-[300px] md:w-[280px] lg:w-[331px] h-[287px]">
+                            </div>
+                        </div>
+                        <div class="w-full rounded-xl border border-[#F1F1F2] drop-shadow-sm h-[287px]">
+                        </div>
+                        <div class="flex justify-between flex-col gap-y-[30px]  md:flex-row gap-x-[30px]">
+                            <div
+                                class=" rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[300px] md:w-[280px] lg:w-[331px] h-[287px]">
+                            </div>
+                            <div
+                                class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[300px] md:w-[280px] lg:w-[331px] h-[287px]">
+                            </div>
+                            <div
+                                class="rounded-xl  hidden lg:inline-block border border-[#F1F1F2] drop-shadow-sm w-[300px] md:w-[280px] lg:w-[331px] h-[287px]">
+                            </div>
+                        </div>
                     </div>
                 </main>
                 <AppsSidebarRight />
-            </div>
         </div>
     </div>
-</template>
+</div></template>
 
 <script setup lang="ts">
 import AppsNavbar from '@/components/AppsNavbar.vue';
