@@ -5,7 +5,7 @@
             <AppsNavbar class="z-20" />
             <div class="flex">
                 <main
-                    class="p-[20px] w-full h-[calc(100vh-65px)] gap-y-[30px] flex flex-col border border-[#F1F1F2] rounded-xl drop-shadow-md">
+                    class="p-[20px] w-full h-[calc(100vh-65px)] overflow-auto gap-y-[30px] flex flex-col border border-[#F1F1F2] rounded-xl drop-shadow-md">
                     <!-- Head Section  -->
                     <div class="flex flex-col gap-y-[11px]">
                         <div class="flex gap-x-[8px]">
@@ -19,15 +19,15 @@
                             <img src="/assets/icons/attention.svg" alt="attention">
                         </div>
                     </div>
-                    <div class="flex flex-row gap-x-[30px]">
+                    <div class="flex justify-between flex-row gap-x-[30px]">
                         <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
                         <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
                         <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
                     </div>
                     <div class="w-full rounded-xl border border-[#F1F1F2] drop-shadow-sm h-[287px]">
                     </div>
-                    <div class="flex flex-row gap-x-[30px]">
-                        <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
+                    <div class="flex justify-between flex-row gap-x-[30px]">
+                        <div class=" rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
                         <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
                         <div class="rounded-xl border border-[#F1F1F2] drop-shadow-sm w-[331px] h-[287px]"></div>
                     </div>
