@@ -11,7 +11,9 @@ export default {
         'background' : '#FFF',
         'border': '#F1F1F2',
         'primary':'#3E97FF',
-        'success': '#50CD89'
+        'success': '#50CD89',
+        'warning': '#F6C000',
+        'danger':'#F1416C'
       },
       fontFamily : {
         'raleway' : ['Raleway', 'sans-serif']

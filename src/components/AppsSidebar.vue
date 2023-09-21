@@ -51,28 +51,25 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isActive = ref(true);
 
-
 const toggleNav = () => {
     isActive.value = !isActive.value;
 };
 
 
 const checkWindowWidth = () => {
-  if (window.innerWidth < 768) {
-    isActive.value = false;
-  } else {
-    isActive.value = true;
-  }
+    if (window.innerWidth < 768) {
+        isActive.value = false;
+    } else {
+        isActive.value = true;
+    }
 };
 
 onMounted(() => {
-  checkWindowWidth(); // Initial check
-
-  window.addEventListener('resize', checkWindowWidth); // Listen for window resize
+    checkWindowWidth(); // Initial check
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', checkWindowWidth); // Remove event listener on component unmount
+    window.removeEventListener('resize', checkWindowWidth); // Remove event listener on component unmount
 });
 
 </script>

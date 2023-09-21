@@ -6,13 +6,12 @@ import { computed } from 'vue'
 const route = useRoute();
 const path = computed(() => route.path)
 
-console.log(path)
 
 </script>
 
 <template>
   <header>
-    <NavbarVue v-if="path != '/apps'" />
+    <NavbarVue v-if="!path.startsWith('/apps')" />
   </header>
 
   <div>

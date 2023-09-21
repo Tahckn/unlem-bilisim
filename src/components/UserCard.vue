@@ -1,5 +1,5 @@
 <template>
-    <div class="py-5 rounded-xl z-30 drop-shadow-lg bg-background px-[20px] flex flex-col gap-y-[20px] items-start justify-center">
+    <div class="py-5 rounded-xl sm:w-auto z-30 drop-shadow-lg bg-background w-[300px] px-[20px] flex flex-col gap-y-[20px] items-start justify-center">
         <!-- Image  -->
         <div class="border-b pb-[20px] border-[#E1E3EA] flex gap-x-[15px] items-center justify-center">
             <img src="/assets/apps/img/user.png" alt="user">
@@ -40,5 +40,3 @@
 <script setup lang="ts">
 
 </script>
-
-<style scoped></style>
