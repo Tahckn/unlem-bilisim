@@ -46,15 +46,19 @@
                                 <!-- Items 2  -->
                                 <div class="flex flex-row gap-x-[20px]">
                                     <div
-                                        class="max-w-[129px] border-[0.5px] gap-y-[5px] border-[#D8D8E5] border-dashed rounded-md px-[15px] py-[11px] flex flex-col items-start">
+                                        class="max-w-auto border-[0.5px] gap-y-[5px] border-[#D8D8E5] border-dashed rounded-md px-[15px] py-[11px] flex flex-col items-start">
                                         <!-- MS  -->
                                         <p class="text-success text-[16x] font-semibold leading-[16px]">102 ms</p>
-                                        <p class="text-[#A1A5B7] text-[12px] font-semibold leading-[12px]">Cevap Süresi</p>
+                                        <p
+                                            class="text-[#A1A5B7] whitespace-nowrap text-[12px] font-semibold leading-[12px]">
+                                            Cevap Süresi</p>
                                     </div>
                                     <!-- Last Request  -->
                                     <div
-                                        class="max-w-[181px] border-[0.5px] gap-y-[5px] border-[#D8D8E5] border-dashed rounded-md px-[15px] py-[11px] flex flex-col items-start">
-                                        <p class="text-[#181C32] text-[16px] font-semibold leading-[16px]">05.08.2023
+                                        class="max-w-auto border-[0.5px] gap-y-[5px] border-[#D8D8E5] border-dashed rounded-md px-[15px] py-[11px] flex flex-col items-start">
+                                        <p
+                                            class="text-[#181C32] whitespace-nowrap text-[16px] font-semibold leading-[16px]">
+                                            05.08.2023
                                             10:36:12</p>
                                         <p class="text-[#A1A5B7] text-[12px] font-semibold leading-[12px]">Son İstek</p>
                                     </div>
@@ -70,13 +74,15 @@
                             <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }"
                                 class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Uygulama
                                 Bilgileri</button>
-                            <button @click="navApiInfo" :class="{ 'active': activeButton === 3 }"
+                            <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }"
+                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Bağlı
+                                Uygulamalar</button>
+                            <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }"
                                 class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">API
                                 Bilgileri</button>
-                            <button @click="navConfiguration" :class="{ 'active': activeButton === 4 }"
+                            <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }"
                                 class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
                         </div>
-
                     </section>
                     <!-- Security Summary  -->
                     <AppsSecuritySummaryWidget v-if="route === obj.path1" />
@@ -86,6 +92,12 @@
                     <AppsSessionsWidget v-if="route === obj.path1" />
                     <!-- App Info  -->
                     <AppInfoWidget v-if="route === obj.path2" />
+                    <!-- Api Info  -->
+                    <AppApiInfoWidget v-if="route === obj.path4" />
+                    <!--  Configuration  -->
+                    <AppConfigurationWidget v-if="route === obj.path5"/>
+                    <!-- <Connected Apps  -->
+                     <AppConnectedAppsWidget v-if="route === obj.path3"/>
                 </main>
                 <AppsSidebarRight />
             </div>
@@ -99,39 +111,47 @@ import AppsNavbar from '@/components/AppsNavbar.vue';
 import AppsSidebar from '@/components/AppsSidebar.vue';
 import AppsSidebarRight from '@/components/AppsSidebarRight.vue';
 import AppsHeadSection from '@/components/AppsHeadSection.vue';
-import AppsSecuritySummaryWidget from '@/components/AppsSecuritySummaryWidget.vue'
+import AppsSecuritySummaryWidget from '@/components/AppsSecuritySummaryWidget.vue';
 import AppsWhislistWidget from '@/components/AppsWhislistWidget.vue';
 import AppsSessionsWidget from '@/components/AppsSessionsWidget.vue';
 import AppInfoWidget from '@/components/AppInfoWidget.vue';
+import AppApiInfoWidget from '@/components/AppApiInfoWidget.vue';
+import AppConfigurationWidget from '@/components/AppConfigurationWidget.vue';
+import AppConnectedAppsWidget from '@/components/AppConnectedAppsWidget.vue'
 
 const obj = reactive({
     path1: 'navGenel',
     path2: 'navAppInfo',
-    path3: 'navApiInfo',
-    path4: 'navConfiguration',
-})
+    path3: 'navConnectedApps',
+    path4: 'navApiInfo',
+    path5: 'navConfiguration',
+});
 
-const route = ref(obj.path1)
+const route = ref(obj.path1);
 
 const navGenel = () => {
-    route.value = obj.path1
-}
+    route.value = obj.path1;
+};
 
 const navAppInfo = () => {
-    route.value = obj.path2
-}
+    route.value = obj.path2;
+};
+const navConnectedApps = () => {
+    route.value = obj.path3;
+};
 const navApiInfo = () => {
-    route.value = obj.path3
-}
+    route.value = obj.path4;
+};
 const navConfiguration = () => {
-    route.value = obj.path4
-}
+    route.value = obj.path5;
+};
 
 const activeButton = computed(() => {
     if (route.value === obj.path1) return 1;
     if (route.value === obj.path2) return 2;
     if (route.value === obj.path3) return 3;
     if (route.value === obj.path4) return 4;
+    if (route.value === obj.path5) return 5;
 });
 
 </script>

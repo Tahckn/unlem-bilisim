@@ -1,6 +1,6 @@
 <template>
      <section
-                        class="w-full h-[600px] shadow-sm border flex flex-col gap-y-[30px] border-[#F1F1F2] rounded-xl p-[30px]">
+                        class="w-full h-[600px] shadow-sm border flex flex-col gap-y-[30px] border-[#F1F1F2] rounded-xl p-[20px]">
                         <!-- header  -->
                         <div class="w-full flex items-center border-b border-[#E1E3EA h-[38px]">
                             <!-- App Status  -->

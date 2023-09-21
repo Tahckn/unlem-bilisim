@@ -1,0 +1,58 @@
+<template>
+    <section
+        class="py-[20px] px-[20px] gap-y-[20px] flex flex-col w-full h-auto shadow-sm border border-[#F1F1F2] rounded-xl">
+        <!-- header  -->
+        <div class="flex w-full items-center border-b pb-[20px] border-[#E1E3EA]">
+            <div class="flex gap-x-[5px] items-center justify-center">
+                <h2 class="text-[#3F4254] text-[18px] font-semibold leading-[16px]">Yapılandırma</h2>
+                <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
+            </div>
+        </div>
+        <!-- Configurations  -->
+        <div class="flex flex-col gap-y-[20px] w-full border-b pb-[20px]">
+            <!-- HTTP Provider  -->
+            <div class="flex w-full flex-row gap-x-[200px]">
+                <div class="flex w-[175px] gap-x-[5px] items-center">
+                    <p class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px]">İki Adımlı
+                        Doğrulama<span class="text-danger font-semibold">*</span></p>
+                    <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
+                </div>
+                <div>
+                    <!-- Switch button  -->
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <div
+                            class="w-11 h-6 bg-gray-200 rounded-full   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white  after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <!-- HTTP Server  -->
+            <div class="flex w-full flex-row gap-x-[200px]">
+                <div class="flex w-[175px] gap-x-[5px] items-center">
+                    <p class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px]">Kullanıcı Erişim Yetki Kodu<span class="text-danger font-semibold">*</span></p>
+                    <img src="/assets/icons/attention.svg"
+                        class="w-[20px] h-[20px] text-[12px] font-semibold leading-[12px]" alt="attention">
+                </div>
+                <div class="flex-grow">
+                    <input type="text"
+                        class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div>
+            <button
+                class="text-[16px] float-right font-semibold leading-[16px] px-[24px] py-[16px] bg-primary rounded-md text-white ">Bilgileri
+                Güncelle</button>
+        </div>
+    </section>
+</template>
+
+<script setup lang="ts">
+
+</script>
+
+<style scoped></style>
