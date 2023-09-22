@@ -1,20 +1,15 @@
 <template>
     <div class="flex flex-row items-start ">
-        <AppsSidebar class="h-screen" />
         <div class="flex flex-col w-full">
-            <AppsNavbar />
             <div class="flex">
-                <main
-                    class="p-[20px] w-full h-[calc(100vh-65px)] overflow-auto gap-y-[10px] flex flex-col border border-[#F1F1F2] rounded-xl">
-                    <!-- Head Section  -->
-                    <AppsHeadSection />
+                <main class="p-[20px] w-full overflow-auto gap-y-[10px] flex flex-col border border-[#F1F1F2] rounded-xl">
                     <!-- Avatar Section  -->
                     <section
-                        class="pt-[20px] px-[20px] justify-between md:gap-y-[45px] w-full flex flex-col h-[232px] shadow-sm border border-[#F1F1F2] rounded-xl">
+                        class="pt-[20px] px-[20px] flex-shrink-0 justify-between md:gap-y-[45px] w-full flex flex-col h-[232px] shadow-sm border border-[#F1F1F2] rounded-xl">
                         <!-- Info Section  -->
                         <div class="flex gap-x-[25px]">
                             <!-- image  -->
-                            <div class="relative">
+                            <div class="relative flex-shrink-0">
                                 <img src="/assets/apps/img/user-detail.png" alt="user=image">
                                 <!-- Online Notification -->
                                 <span
@@ -30,17 +25,23 @@
                                 <div class="flex flex-row gap-x-[15px]  pb-[20px]">
                                     <div class="flex gap-x-[5px] items-center justify-center">
                                         <img src="/assets/icons/home-2.svg" alt="home">
-                                        <p class="text-[#A1A5B7] text-[15px] font-semibold leading-[16px]">Ünlem Bilişim
+                                        <p
+                                            class="text-[#A1A5B7] text-[15px] whitespace-nowrap font-semibold leading-[16px]">
+                                            Ünlem Bilişim
                                             Teknolojileri A.Ş.</p>
                                     </div>
                                     <div class="flex gap-x-[5px] items-center justify-center">
                                         <img src="/assets/icons/link.svg" alt="home">
-                                        <p class="text-[#A1A5B7] text-[15px] font-semibold leading-[16px]">muhasebetik.com
+                                        <p
+                                            class="text-[#A1A5B7] text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
+                                            muhasebetik.com
                                         </p>
                                     </div>
                                     <div class="flex gap-x-[5px] items-center justify-center">
                                         <img src="/assets/icons/key.svg" alt="home">
-                                        <p class="text-[#A1A5B7] text-[15px] font-semibold leading-[16px]">Özel Yazılım</p>
+                                        <p
+                                            class="text-[#A1A5B7] text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
+                                            Özel Yazılım</p>
                                     </div>
                                 </div>
                                 <!-- Items 2  -->
@@ -69,37 +70,53 @@
                         <!-- Tab Section  -->
                         <div class="flex gap-x-[29px] items-start w-full">
                             <button @click="navGenel" :class="{ 'active': activeButton === 1 }"
-                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Genel
+                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] whitespace-nowrap flex flex-col pb-[20px] items-center justify-center">Genel
                                 Bakış</button>
                             <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }"
-                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Uygulama
+                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] whitespace-nowrap flex flex-col pb-[20px] items-center justify-center">Uygulama
                                 Bilgileri</button>
                             <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }"
-                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Bağlı
+                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] whitespace-nowrap flex flex-col pb-[20px] items-center justify-center">Bağlı
                                 Uygulamalar</button>
                             <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }"
-                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">API
+                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] whitespace-nowrap flex flex-col pb-[20px] items-center justify-center">API
                                 Bilgileri</button>
                             <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }"
-                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
+                                class="h-[37px] text-[#A1A5B7] text-[16px] font-semibold leading-[16px] whitespace-nowrap flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
                         </div>
                     </section>
-                    <!-- Security Summary  -->
-                    <AppsSecuritySummaryWidget v-if="route === obj.path1" />
-                    <!-- Whislisht  -->
-                    <AppsWhislistWidget v-if="route === obj.path1" />
-                    <!-- Sessions  -->
-                    <AppsSessionsWidget v-if="route === obj.path1" />
-                    <!-- App Info  -->
-                    <AppInfoWidget v-if="route === obj.path2" />
-                    <!-- Api Info  -->
-                    <AppApiInfoWidget v-if="route === obj.path4" />
-                    <!--  Configuration  -->
-                    <AppConfigurationWidget v-if="route === obj.path5"/>
-                    <!-- <Connected Apps  -->
-                     <AppConnectedAppsWidget v-if="route === obj.path3"/>
+                    <!-- Routes  -->
+                    <Transition>
+                        <!-- Security Summary  -->
+                        <AppsSecuritySummaryWidget v-if="route === obj.path1" />
+                    </Transition>
+                    <Transition>
+                        <!-- Whislisht  -->
+                        <AppsWhislistWidget v-if="route === obj.path1" />
+                    </Transition>
+                    <Transition>
+                        <!-- Sessions  -->
+                        <AppsSessionsWidget v-if="route === obj.path1" />
+                    </Transition>
+                    <Transition>
+                        <!-- App Info  -->
+                        <AppInfoWidget v-if="route === obj.path2" />
+                    </Transition>
+                    <Transition>
+                        <!-- Api Info  -->
+                        <AppApiInfoWidget v-if="route === obj.path4" />
+                    </Transition>
+
+                    <Transition>
+                        <!--  Configuration  -->
+                        <AppConfigurationWidget v-if="route === obj.path5" />
+                    </Transition>
+
+                    <Transition>
+                        <!-- <Connected Apps  -->
+                        <AppConnectedAppsWidget v-if="route === obj.path3" />
+                    </Transition>
                 </main>
-                <AppsSidebarRight />
             </div>
         </div>
     </div>
@@ -107,17 +124,13 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue';
-import AppsNavbar from '@/components/AppsNavbar.vue';
-import AppsSidebar from '@/components/AppsSidebar.vue';
-import AppsSidebarRight from '@/components/AppsSidebarRight.vue';
-import AppsHeadSection from '@/components/AppsHeadSection.vue';
-import AppsSecuritySummaryWidget from '@/components/AppsSecuritySummaryWidget.vue';
-import AppsWhislistWidget from '@/components/AppsWhislistWidget.vue';
-import AppsSessionsWidget from '@/components/AppsSessionsWidget.vue';
-import AppInfoWidget from '@/components/AppInfoWidget.vue';
-import AppApiInfoWidget from '@/components/AppApiInfoWidget.vue';
-import AppConfigurationWidget from '@/components/AppConfigurationWidget.vue';
-import AppConnectedAppsWidget from '@/components/AppConnectedAppsWidget.vue'
+import AppsSecuritySummaryWidget from '@/components/widgets/AppsSecuritySummaryWidget.vue';
+import AppsWhislistWidget from '@/components/widgets/AppsWhislistWidget.vue';
+import AppsSessionsWidget from '@/components/widgets/AppsSessionsWidget.vue';
+import AppInfoWidget from '@/components/widgets/AppInfoWidget.vue';
+import AppApiInfoWidget from '@/components/widgets/AppApiInfoWidget.vue';
+import AppConfigurationWidget from '@/components/widgets/AppConfigurationWidget.vue';
+import AppConnectedAppsWidget from '@/components/widgets/AppConnectedAppsWidget.vue'
 
 const obj = reactive({
     path1: 'navGenel',

@@ -1,20 +1,51 @@
 <script setup lang="ts">
 import { RouterView, useRoute } from 'vue-router'
-import NavbarVue from './components/Navbar.vue';
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import AppsHeadSection from '@/components/AppsHeadSection.vue';
+import AppsNavbar from '@/components/AppsNavbar.vue';
+import AppsSidebar from '@/components/AppsSidebar.vue';
+import AppsSidebarRight from '@/components/AppsSidebarRight.vue';
+import AppListWidget from '@/components/widgets/AppListWidget.vue';
 
 const route = useRoute();
 const path = computed(() => route.path)
+const isActive = ref(true);
 
+const toggleSidebar = (newState: boolean) => {
+  isActive.value = newState;
+};
+
+import {fetchData} from './getData'
+
+fetchData()
+  .then((data)=>{
+    console.log('basarili',data)
+  })
+  .catch((error)=>{
+    console.log('basarisiz',error)
+  })
 
 </script>
-
 <template>
-  <header>
-    <NavbarVue v-if="!path.startsWith('/apps')" />
-  </header>
-
-  <div>
-    <RouterView />
+  <div class="flex flex-row items-start ">
+    <AppsSidebar :isActive="isActive" @toggle-sidebar="toggleSidebar" class="h-screen fixed z-40" />
+    <div class="flex flex-col w-full" :style="{ marginLeft: isActive ? '300px' : '0' }">
+      <AppsNavbar class="fixed" :style="{ paddingRight: isActive ? '320px' : '' }" />
+      <div class="flex">
+        <main
+          class="p-[20px] w-full h-[calc(100vh-65px)] gap-y-[10px] flex flex-col border-x border border-[#F1F1F2] rounded-xl mr-[68px] mt-[65px]">
+          <!-- Header Section  -->
+          <AppsHeadSection />
+          <!-- Widgets  -->
+          <div>
+            <RouterView />
+          </div>
+          <!-- List  -->
+          <AppListWidget v-if="path === '/apps'" />
+        </main>
+        <AppsSidebarRight />
+      </div>
+    </div>
   </div>
 </template>
+

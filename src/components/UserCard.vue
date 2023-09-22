@@ -1,5 +1,6 @@
 <template>
-    <div class="py-5 rounded-xl sm:w-auto z-30 drop-shadow-lg bg-background w-[300px] px-[20px] flex flex-col gap-y-[20px] items-start justify-center">
+    <div
+        class="py-5 rounded-xl sm:w-auto z-30 drop-shadow-lg bg-background w-[300px] px-[20px] flex flex-col gap-y-[20px] items-start justify-center">
         <!-- Image  -->
         <div class="border-b pb-[20px] border-[#E1E3EA] flex gap-x-[15px] items-center justify-center">
             <img src="/assets/apps/img/user.png" alt="user">
@@ -16,27 +17,43 @@
             </div>
         </div>
         <!-- Bilgilerim islem gecmisi  -->
-        <div class="flex flex-col border-b w-full border-[#E1E3EA]">
-            <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">Bilgilerim
-            </p>
-            <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">İşlem
-                Geçmişi</p>
+        <div class="flex items-start flex-col border-b w-full border-[#E1E3EA]">
+            <button @click="router.push('/my-information')">
+                <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">
+                    Bilgilerim
+                </p>
+            </button>
+            <button @click="router.push('/my-transactions')">
+                <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">İşlem
+                    Geçmişi</p>
+            </button>
         </div>
+        <!-- Dil tercihi  -->
         <div class="flex flex-col w-full">
             <div class="flex items-center justify-between">
-                <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">Dil
-                    Tercihi</p>
+                <button>
+                    <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">Dil
+                        Tercihi</p>
+                </button>
+                <button>
                     <div class="bg-[#F9F9F9] rounded flex gap-x-[10px] p-[5px]">
                         <p class="text-[#5E6278] text-[12px] font-semibold leading-[12px]">English</p>
                         <img src="/assets/apps/img/america.png" alt="">
                     </div>
+                </button>
             </div>
-            <p class="text-[16px] px-[15px] py-[17px] self-stretch font-semibold leading-[16px] text-[#5E6278]">Çıkış Yap
-            </p>
+            <button>
+                <p class="float-left text-[16px] px-[15px] py-[17px] font-semibold leading-[16px] text-[#5E6278]">Çıkış
+                    Yap
+                </p>
+            </button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 </script>

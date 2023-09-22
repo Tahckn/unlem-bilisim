@@ -1,12 +1,14 @@
 <template>
     <Transition>
-        <button @click="toggleNav" v-if="!isActive"
-            class="border cursor-pointer border-[#181C32] top-12 z-20 bg-[#181C32] rounded-r-[6px]  h-8 w-8 flex items-center absolute p-[5px] left-0">
-            <img class="rotate-180 py-1.5 pr-[1px] pl-2" src="/assets/icons/arrow-left.svg" alt="back">
-        </button>
+        <div class="fixed top-[10%] left-0">
+            <button @click="toggleNav" v-if="!isActive"
+                class="border cursor-pointer border-[#181C32] top-12 bg-[#181C32] rounded-r-[6px]  h-8 w-8 flex items-center absolute p-[5px] left-0">
+                <img class="rotate-180 py-1.5 pr-[1px] pl-2" src="/assets/icons/arrow-left.svg" alt="back">
+            </button>
+        </div>
     </Transition>
     <Transition name="slide">
-        <aside v-show="isActive" class="w-[280px] flex flex-shrink-0 gap-y-5 flex-col h-screen bg-[#131313]">
+        <aside v-show="isActive" class="w-[280px] flex flex-shrink-0 gap-y-5 flex-col h-screen bg-[#131313] fixed z-50">
             <!-- Logo -->
             <div class="w-[260px] flex flex-col justify-between h-screen mx-auto">
                 <div>
@@ -47,14 +49,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted } from 'vue';
 
-const isActive = ref(true);
+const { isActive: propIsActive } = defineProps(['isActive']);
+const emit = defineEmits();
+
+const isActive = ref(propIsActive);
+
 
 const toggleNav = () => {
     isActive.value = !isActive.value;
+    emit('toggle-sidebar', isActive.value); // Emit the event to notify the parent component
 };
-
 
 const checkWindowWidth = () => {
     if (window.innerWidth < 768) {
@@ -65,14 +71,9 @@ const checkWindowWidth = () => {
 };
 
 onMounted(() => {
-    checkWindowWidth(); // Initial check
+    checkWindowWidth(); // Initial check for sidebar apperance
 });
-
-onBeforeUnmount(() => {
-    window.removeEventListener('resize', checkWindowWidth); // Remove event listener on component unmount
-});
-
-</script>
+</script> 
 
 <style>
 .slide-enter {
