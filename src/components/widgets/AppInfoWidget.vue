@@ -12,7 +12,7 @@
         <!-- Profile Details  -->
         <div class="flex flex-col gap-y-[20px] w-full border-b pb-[20px]">
             <!-- Logo  -->
-            <div class="flex flex-row md:gap-x-[120px] lg:gap-x-[200px] items-start">
+            <div class="flex flex-col gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px] items-start">
                 <div class="flex w-[175px] gap-x-[5px] items-center">
                     <p
                         class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px]">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <!-- App Code  -->
-            <div class="flex w-full flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+            <div class="flex w-full flex-col gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
                 <div class="flex w-[175px] gap-x-[5px] items-center ">
                     <p
                         class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px]">
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <!-- App Name  -->
-            <div class="flex w-full flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+            <div class="flex w-full flex-col gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
                 <div class="flex w-[175px] gap-x-[5px] items-center">
                     <p
                         class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px]">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <!-- Domain  -->
-            <div class="flex w-full flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+            <div class="flex w-full flex-col gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
                 <div class="flex w-[175px] gap-x-[5px] items-center">
                     <p
                         class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px]">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <!-- Status  -->
-            <div class="flex w-full flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+            <div class="flex w-full flex-col gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
                 <div class="flex w-[175px] gap-x-[5px] items-center">
                     <p
                         class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px]">

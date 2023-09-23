@@ -31,7 +31,7 @@
                 </div>
             </div>
             <!-- HTTP Server  -->
-            <div class="flex w-full flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+            <div class="flex w-full flex-col gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
                 <div class="flex w-[158px] md:w-[175px] gap-x-[5px] items-center">
                     <p
                         class="text-[#5E6278] text-[13px] whitespace-normal leading-[12px] md:text-[18px] font-semibold md:leading-[18px] tracking-[-0.18px]">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="flex-grow">
                     <input type="text"
-                        class="text-[#7E8299] md:ml-0 ml-[16px] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md">
+                        class="text-[#7E8299]  w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md">
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
             <h1 v-if="path === '/apps'" class="text-[#181C32] text-[22px] font-semibold leading-[22px] tracking-[-0.22px]">
                 Uygulamalar</h1>
             <h1 v-if="path === '/apps/user-detail'"
-                class="text-[#181C32] text-[18px] font-semibold leading-[18px] tracking-[-0.18px]">
+                class="text-[#181C32] text-[14px] md:text-[18px] font-semibold leading-[18px] tracking-[-0.18px]">
                 MuhasebeTik</h1>
         </div>
     </div>

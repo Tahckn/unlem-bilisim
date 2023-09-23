@@ -32,7 +32,7 @@
                                         <img class="w-[15px] h-[15px] md:w-[21px] md:h-[21px]"
                                             src="/assets/icons/home-2.svg" alt="home">
                                         <p
-                                            class="text-[#A1A5B7] text-[13px] md:text-[15px] whitespace-nowrap font-semibold leading-[16px]">
+                                            class="text-[#A1A5B7] text-[12px] md:text-[15px] whitespace-nowrap font-semibold leading-[16px]">
                                             Ünlem Bilişim
                                             Teknolojileri A.Ş.</p>
                                     </div>
@@ -40,7 +40,7 @@
                                         <img class="w-[15px] h-[15px] md:w-[21px] md:h-[21px]" src="/assets/icons/link.svg"
                                             alt="home">
                                         <p
-                                            class="text-[#A1A5B7] text-[13px] md:text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
+                                            class="text-[#A1A5B7] text-[12px] md:text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
                                             muhasebetik.com
                                         </p>
                                     </div>
@@ -48,12 +48,12 @@
                                         <img class="w-[15px] h-[15px] md:w-[21px] md:h-[21px]" src="/assets/icons/key.svg"
                                             alt="home">
                                         <p
-                                            class="text-[#A1A5B7] text-[13px] md:text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
+                                            class="text-[#A1A5B7] text-[12px] md:text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
                                             Özel Yazılım</p>
                                     </div>
                                 </div>
                                 <!-- Items -->
-                                <div class="flex md:flex-row gap-x-[10px] md:gap-x-[20px]">
+                                <div class="flex flex-row gap-x-[10px] md:gap-x-[20px]">
                                     <!-- Response Time -->
                                     <div
                                         class="max-w-auto border-[0.5px] gap-y-[8px] md:gap-y-[5px] border-[#D8D8E5] border-dashed rounded-md px-[15px] py-[11px] flex flex-col items-start">
@@ -87,46 +87,46 @@
                             class="flex sm:gap-x-[20px] md:gap-x-[29px] items-center justify-between sm:items-start w-full">
                             <div>
                                 <button @click="navGenel" :class="{ 'active': activeButton === 1 }"
-                                    class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Genel
+                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Genel
                                     Bakış</button>
                                 <button @click="navGenel" :class="{ 'active': activeButton === 1 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/eye.svg"
                                         alt="icon">
                                 </button>
                             </div>
 
                             <div>
                                 <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }"
-                                    class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Uygulama
+                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Uygulama
                                     Bilgileri</button>
                                 <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/information.svg"
                                         alt="icon">
                                 </button>
                             </div>
                             <div>
                                 <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }"
-                                    class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Bağlı
+                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Bağlı
                                     Uygulamalar</button>
                                 <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/connected.svg"
                                         alt="icon">
                                 </button>
                             </div>
                             <div>
                                 <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }"
-                                    class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">API
+                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">API
                                     Bilgileri</button>
                                 <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/api.svg"
                                         alt="icon">
                                 </button>
                             </div>
                             <div>
                                 <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }"
-                                    class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
+                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
                                 <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/configuration.svg"
                                         alt="icon">
                                 </button>
                             </div>
@@ -218,7 +218,7 @@ const activeButton = computed(() => {
 
 <style>
 .active {
-    border-bottom: 1px solid #3E97FF;
+    border-bottom: 2px solid #3E97FF;
     color: #3E97FF;
 }
 </style>

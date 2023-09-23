@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView, useRoute } from 'vue-router'
-import { computed, ref } from 'vue'
+import { computed, ref,watchEffect } from 'vue'
 import AppsHeadSection from '@/components/AppsHeadSection.vue';
 import AppsNavbar from '@/components/AppsNavbar.vue';
 import AppsSidebar from '@/components/AppsSidebar.vue';
@@ -14,6 +14,14 @@ const isActive = ref(true);
 const toggleSidebar = (newState: boolean) => {
   isActive.value = newState;
 };
+
+watchEffect(() => {
+  if (window.innerWidth < 768) {
+    isActive.value = false;
+  } else {
+    isActive.value = true;
+  }
+});
 
 import {fetchData} from './getData'
 

@@ -16,7 +16,7 @@
                 <!-- Yeni ekle card  -->
                 <Transition>
                     <div v-if="isActive"
-                        class="absolute z-40 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  bg-white rounded-md border border-[#E1E3EA] py-[20px] w-[600px]">
+                        class="absolute z-40 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  bg-white rounded-md border border-[#E1E3EA] py-[20px] lg:w-[600px] md:w-[500px] w-auto">
                         <div class="flex flex-col items-start">
                             <!-- header  -->
                             <div class="flex justify-between px-[20px] w-full pb-[20px]">
@@ -37,7 +37,7 @@
                                         <img class="w-[14px] h-[14px]" src="/assets/icons/attention.svg" alt="attention">
                                     </div>
                                     <div>
-                                        <input class="bg-[#F1F1F2] outline-none w-full p-[12px] rounded-md"
+                                        <input class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md "
                                             placeholder="Uygulama Seçiniz." type="text">
                                     </div>
                                 </div>

@@ -5,7 +5,7 @@
             <!-- header  -->
             <div class="flex w-full items-center border-b pb-[20px] border-[#E1E3EA]">
                 <div class="flex gap-x-[5px] items-center justify-center">
-                    <h2 class="text-[#3F4254] text-[18px] font-semibold leading-[16px]">Kullanıcı Bilgileri</h2>
+                    <h2 class="text-[#181C32] text-[14px] leading-[12px]  md:text-[18px] font-semibold md:leading-[16px]">Kullanıcı Bilgileri</h2>
                     <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                 </div>
             </div>
@@ -13,9 +13,9 @@
             <div class="flex flex-col gap-y-[20px] w-full border-b pb-[20px]">
                 <!-- Avatar  -->
                 <div class="flex flex-row gap-x-[200px] items-start">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Avatar</p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -33,95 +33,97 @@
                     </div>
                 </div>
                 <!-- Ad Soyad  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center ">
+                <div class="flex w-full gap-x-5px flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center ">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Ad Soyad
                             <span class="text-danger font-semibold">*</span>
                         </p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
-                    <div class="flex-grow">
-                        <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
-                    </div>
-                    <div class="flex-grow ">
-                        <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                    <div class="flex items-center justify-between">
+                        <div class="">
+                            <input type="text"
+                                class="text-[#7E8299] sm:w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                        </div>
+                        <div class=" ">
+                            <input type="text"
+                                class="text-[#7E8299] sm:w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                        </div>
                     </div>
                 </div>
                 <!--Telefon Numarasi  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Telefon Numarası<span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg"
                             class="w-[20px] h-[20px] text-[12px] font-semibold leading-[12px]" alt="attention">
                     </div>
                     <div class="flex-grow">
                         <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                     </div>
                 </div>
                 <!-- E-posta  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             E-Posta Adresi <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
                     <div class="flex-grow">
                         <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                     </div>
                 </div>
                 <!-- Dil Tercihi  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Dil tercihi <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
                     <div class="flex-grow">
                         <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                     </div>
                 </div>
                 <!-- Saat Dilimi  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Saat Dilimi <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
                     <div class="flex-grow">
                         <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                     </div>
                 </div>
                 <!-- Tema Modu *  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Tema Modu<span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
                     <div class="flex-grow">
                         <input type="text"
-                            class="text-[#7E8299] w-full px-[12px] py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                     </div>
                 </div>
                 <!-- Status  -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             İki Faktörlü Doğrulama (2FA) <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -136,10 +138,10 @@
                     </div>
                 </div>
                 <!-- 2FA Doğrulama Methodları -->
-                <div class="flex w-full flex-row gap-x-[200px]">
-                    <div class="flex w-[200px] gap-x-[5px] items-center">
+                <div class="flex w-full flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             İki Faktörlü Doğrulama (2FA) <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -148,11 +150,11 @@
                         <div class="flex items-center mb-4">
                             <input id="e-posta" type="checkbox" value=""
                                 class="text-white accent-primary w-[30px] h-[30px]">
-                            <label for="e-posta" class=" ml-[10px] text-[#5E6278] font-semibold">E-posta</label>
+                            <label for="e-posta" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">E-posta</label>
                         </div>
                         <div class="flex items-center mb-4">
                             <input id="sms" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                            <label for="sms" class=" ml-[10px] text-[#5E6278] font-semibold">SMS</label>
+                            <label for="sms" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">SMS</label>
                         </div>
                     </div>
                 </div>
@@ -160,26 +162,27 @@
             </div>
             <div>
                 <button
-                    class="text-[16px] float-right font-semibold leading-[16px] px-[24px] py-[16px] bg-primary rounded-md text-white ">Bilgileri
+                    class="text-[12px] leading-[12px] md:text-[16px] float-right font-semibold md:leading-[16px] px-[16px] md:px-[24px] py-[10px] md:py-[16px] bg-primary rounded-md text-white">Bilgileri
                     Güncelle</button>
             </div>
         </section>
 
+        <!-- Giris yontemleri  -->
         <section
             class="py-[20px] px-[20px] gap-y-[20px] flex flex-col w-full h-auto shadow-sm border border-[#F1F1F2] rounded-xl">
             <!-- header  -->
             <div class="flex w-full items-center border-b pb-[20px] border-[#E1E3EA]">
                 <div class="flex gap-x-[5px] items-center justify-center">
-                    <h2 class="text-[#3F4254] text-[18px] font-semibold leading-[16px]">Giriş Yöntemleri</h2>
+                    <h2 class="text-[#181C32] text-[14px] leading-[12px]  md:text-[18px] font-semibold md:leading-[16px]">Giriş Yöntemleri</h2>
                     <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                 </div>
             </div>
-            <div class="flex items-center border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
+            <div class="flex flex-col gap-y-[5px] md:flex-row items-start border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
                 <!-- Eposta Adresi  -->
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             E-posta Adresi<span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -190,16 +193,16 @@
                 </div>
                 <!-- Eposta Change -->
                 <div>
-                    <button class="bg-[#F1F1F2] px-[16px] font-semibold rounded-md py-[12px] text-[#7E8299]">E-posta Adresi
+                    <button class="bg-[#F1F1F2] px-[10px] md:px-[16px] font-semibold rounded-md py-[8px] text-[13px] md:text-[16px] md:py-[12px] text-[#7E8299]">E-posta Adresi
                         Değiştir</button>
                 </div>
             </div>
-            <div class="flex items-center border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
+            <div class="flex flex-col gap-y-[5px] md:flex-row items-start border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
                 <!-- Telefon Numarası -->
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Telefon Numarası<span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -210,16 +213,16 @@
                 </div>
                 <!-- Telefon Degistir -->
                 <div>
-                    <button class="bg-[#F1F1F2] px-[16px] font-semibold rounded-md py-[12px] text-[#7E8299]">Telefon
+                    <button class="bg-[#F1F1F2] px-[10px] md:px-[16px] font-semibold rounded-md py-[8px] text-[13px] md:text-[16px] md:py-[12px] text-[#7E8299]">Telefon
                         Numarası</button>
                 </div>
             </div>
-            <div class="flex items-center border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
+            <div class="flex flex-col gap-y-[5px] md:flex-row items-start border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
                 <!-- sifre -->
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Şifre<span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -229,13 +232,13 @@
                 </div>
                 <!--  sifre -->
                 <div>
-                    <button class="bg-[#F1F1F2] px-[16px] font-semibold rounded-md py-[12px] text-[#7E8299]">Şifre
+                    <button class="bg-[#F1F1F2] px-[10px] md:px-[16px] font-semibold rounded-md py-[8px] text-[13px] md:text-[16px] md:py-[12px] text-[#7E8299]">Şifre
                         Değiştir</button>
                 </div>
 
             </div>
-            <div class="py-[16px] rounded-[7px] bg-[#EEF6FF] px-[14px] flex border border-dashed border-primary">
-                <img class="mr-[15px]" src="/assets/icons/shield.svg" alt="shield">
+            <div class="py-[16px] gap-y-[10px] flex-col md:items-start items-center md:flex-row rounded-[7px] bg-[#EEF6FF] px-[14px] flex border border-dashed border-primary">
+                <img class="mr-[15px] w-[25px] h-[56px]" src="/assets/icons/shield.svg" alt="shield">
 
                 <div class="flex flex-col gap-y-[5px]">
                     <p class="">Hesabını Güvenli Hale Getir</p>
@@ -245,7 +248,7 @@
                 </div>
 
                 <button
-                    class="text-[16px] ml-auto font-semibold leading-[16px] px-[16px] py-[12px] bg-primary rounded-md text-white ">Aktif
+                    class="text-[12px] md:ml-auto leading-[12px] md:text-[16px] float-right font-semibold md:leading-[16px] px-[16px] md:px-[24px] py-[10px] md:py-[16px] bg-primary rounded-md text-white ">Aktif
                     Et
                 </button>
             </div>
@@ -256,7 +259,7 @@
             <!-- header  -->
             <div class="flex w-full items-center border-b pb-[20px] border-[#E1E3EA]">
                 <div class="flex gap-x-[5px] items-center justify-center">
-                    <h2 class="text-[#3F4254] text-[18px] font-semibold leading-[16px]">Bildirimler ve Duyurular</h2>
+                    <h2 class="text-[#181C32] text-[14px] leading-[12px]  md:text-[18px] font-semibold md:leading-[16px]">Bildirimler ve Duyurular</h2>
                     <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                 </div>
             </div>
@@ -265,7 +268,7 @@
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Sistem Bildirimleri</p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -275,11 +278,11 @@
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="e-posta" class=" ml-[10px] text-[#5E6278] font-semibold">E-posta</label>
+                        <label for="e-posta" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">E-posta</label>
                     </div>
                     <div class="flex items-center mb-4">
                         <input id="sms" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="sms" class=" ml-[10px] text-[#5E6278] font-semibold">SMS</label>
+                        <label for="sms" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">SMS</label>
                     </div>
                 </div>
             </div>
@@ -288,7 +291,7 @@
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Sistem Duyurları</p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -298,11 +301,11 @@
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="e-posta" class=" ml-[10px] text-[#5E6278] font-semibold">E-posta</label>
+                        <label for="e-posta" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">E-posta</label>
                     </div>
                     <div class="flex items-center mb-4">
                         <input id="sms" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="sms" class=" ml-[10px] text-[#5E6278] font-semibold">SMS</label>
+                        <label for="sms" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">SMS</label>
                     </div>
                 </div>
             </div>
@@ -311,7 +314,7 @@
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Bakım Duyuruları </p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -321,11 +324,11 @@
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="e-posta" class=" ml-[10px] text-[#5E6278] font-semibold">E-posta</label>
+                        <label for="e-posta" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">E-posta</label>
                     </div>
                     <div class="flex items-center mb-4">
                         <input id="sms" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="sms" class=" ml-[10px] text-[#5E6278] font-semibold">SMS</label>
+                        <label for="sms" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">SMS</label>
                     </div>
                 </div>
             </div>
@@ -334,7 +337,7 @@
                 <div>
                     <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
                         <p
-                            class="text-[#5E6278] text-[18px] font-semibold leading-[18px] tracking-[-0.18px] whitespace-nowrap">
+                            class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Güncelleme Duyuruları </p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
@@ -344,18 +347,18 @@
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="e-posta" class=" ml-[10px] text-[#5E6278] font-semibold">E-posta</label>
+                        <label for="e-posta" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">E-posta</label>
                     </div>
                     <div class="flex items-center mb-4">
                         <input id="sms" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="sms" class=" ml-[10px] text-[#5E6278] font-semibold">SMS</label>
+                        <label for="sms" class=" ml-[10px] text-[13px] md:text-[16px] text-[#5E6278] font-semibold">SMS</label>
                     </div>
                 </div>
             </div>
             <div class="py-[16px] rounded-[7px] px-[14px] border-t border-[#F1F1F2] flex ">
 
                 <button
-                    class="text-[16px] ml-auto font-semibold leading-[16px] px-[24px] py-[16px] bg-primary rounded-md text-white ">Güncelle
+                    class="text-[12px] ml-auto leading-[12px] md:text-[16px] float-right font-semibold md:leading-[16px] px-[16px] md:px-[24px] py-[10px] md:py-[16px] bg-primary rounded-md text-white">Güncelle
                 </button>
             </div>
         </section>
@@ -365,7 +368,7 @@
             <!-- header  -->
             <div class="flex w-full items-center border-b pb-[20px] border-[#E1E3EA]">
                 <div class="flex gap-x-[5px] items-center justify-center">
-                    <h2 class="text-[#3F4254] text-[18px] font-semibold leading-[16px]">Hesabını Devre Dışı Bırak</h2>
+                    <h2 class="text-[#181C32] text-[14px] leading-[12px]  md:text-[18px] font-semibold md:leading-[16px]">Hesabını Devre Dışı Bırak</h2>
                     <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                 </div>
             </div>
@@ -392,7 +395,7 @@
             </div>
             <div>
                 <button
-                    class="float-right px-[24px] rounded-md py-[16px] bg-danger text-white text-[16px] leading-[16px] font-semibold">
+                    class="text-[12px] ml-auto rounded-md float-right font-semibold md:leading-[16px] px-[16px] md:px-[24px] py-[10px] md:py-[16px] bg-danger text-white md:text-[16px] leading-[16px]">
                     Devre Dışı Bırak
                 </button>
             </div>
