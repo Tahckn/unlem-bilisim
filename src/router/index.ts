@@ -28,6 +28,7 @@ const router = createRouter({
       name: "/islemler",
       component: () => import("../views/apps/AppsMyTransactions.vue"),
     },
+    { path: '/', redirect: '/apps' }
   ],
 });
 

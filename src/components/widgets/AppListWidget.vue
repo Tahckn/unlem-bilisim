@@ -1,7 +1,7 @@
 <template>
     <!-- Search Section  -->
     <div>
-        <div class="flex flex-col md:flex-row gap-y-[12px] justify-between px-[20px] pt-[20px] items-center">
+        <div class="flex flex-col md:flex-row gap-y-[12px] justify-between px-[10px] md:px-[20px] pt-[20px] items-center">
             <input class="bg-[#F9F9F9] w-full min-w-[165px] md:w-auto lg:w-[279px] px-[12px] h-[38px]" type="text"
                 placeholder="Ara" name="search" id="search">
             <div
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="mx-auto w-full p-[20px] shadow-sm rounded-[12px] flex flex-col gap-y-[20px]">
+    <div class="mx-auto w-full px-[10px] md:px-[20px] py-[20px] shadow-sm rounded-[12px] flex flex-col gap-y-[20px]">
         <!-- Cards -->
         <div class="grid grid-cols-1 gap-y-[30px] md:grid-cols-2 lg:grid-cols-3 gap-x-[30px]">
             <div v-for="i in 3">
