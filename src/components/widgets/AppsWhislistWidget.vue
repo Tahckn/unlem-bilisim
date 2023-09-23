@@ -1,6 +1,6 @@
 <template>
     <section
-        class="px-[20px] md:px-[30px] pb-[42px] pt-[30px] gap-y-[20px] flex flex-col w-full h-auto shadow-sm border border-[#F1F1F2] rounded-xl">
+        class="px-[15px] md:px-[30px] pb-[42px] pt-[30px] gap-y-[20px] flex flex-col w-full h-auto shadow-sm border border-[#F1F1F2] rounded-xl">
         <!-- header  -->
         <div class="flex items-center">
             <div class="flex gap-x-[5px] items-center justify-center">
