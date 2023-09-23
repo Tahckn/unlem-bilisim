@@ -33,7 +33,7 @@ fetchData()
       <AppsNavbar class="fixed" :style="{ paddingRight: isActive ? '320px' : '' }" />
       <div class="flex">
         <main
-          class="p-[20px] w-full h-[calc(100vh-65px)] gap-y-[10px] flex flex-col border-x border border-[#F1F1F2] rounded-xl mr-[68px] mt-[65px]">
+          class="p-[20px] w-full gap-y-[10px] flex flex-col border-x border border-[#F1F1F2] rounded-xl mr-[68px] mt-[65px]">
           <!-- Header Section  -->
           <AppsHeadSection />
           <!-- Widgets  -->

@@ -20,7 +20,7 @@
         <!-- Table Header  -->
         <div class="overflow-x-auto w-full">
             <div
-                class="flex sticky top-0 flex-row min-w-fit whitespace-nowrap justify-between gap-x-[23px] w-full text-[#A1A5B7] py-[17px] px-[20px] rounded-md h-[50px] bg-[#F1F1F2] text-[16px] font-semibold leading-[16px]">
+                class="flex flex-row min-w-fit whitespace-nowrap justify-between gap-x-[23px] w-full text-[#A1A5B7] py-[17px] px-[20px] rounded-md h-[50px] bg-[#F1F1F2] text-[16px] font-semibold leading-[16px]">
                 <div class="flex items-center min-w-[122px] gap-x-[5px] flex-shrink-0">
                     <p>Konum</p>
                     <img src="/assets/icons/attention.svg" class="w-[13px] h-[13px]" alt="attention">

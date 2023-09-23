@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row items-start ">
+    <div class="flex flex-row items-start md:mr-[68px]">
         <div class="flex flex-col w-full">
             <div class="flex">
                 <main class="p-[20px] w-full overflow-auto gap-y-[10px] flex flex-col border border-[#F1F1F2] rounded-xl">
