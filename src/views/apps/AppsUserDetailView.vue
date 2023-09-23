@@ -81,13 +81,17 @@
                         </div>
 
                         <!-- Tab Section  -->
-                        <div class="flex sm:gap-x-[20px] md:gap-x-[29px] items-center justify-between sm:items-start w-full">
+                        <!-- !add icon  -->
+
+                        <div
+                            class="flex sm:gap-x-[20px] md:gap-x-[29px] items-center justify-between sm:items-start w-full">
                             <div>
                                 <button @click="navGenel" :class="{ 'active': activeButton === 1 }"
                                     class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Genel
                                     Bakış</button>
                                 <button @click="navGenel" :class="{ 'active': activeButton === 1 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg" alt="icon">
+                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                        alt="icon">
                                 </button>
                             </div>
 
@@ -96,7 +100,8 @@
                                     class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Uygulama
                                     Bilgileri</button>
                                 <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg" alt="icon">
+                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                        alt="icon">
                                 </button>
                             </div>
                             <div>
@@ -104,7 +109,8 @@
                                     class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Bağlı
                                     Uygulamalar</button>
                                 <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg" alt="icon">
+                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                        alt="icon">
                                 </button>
                             </div>
                             <div>
@@ -112,14 +118,16 @@
                                     class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">API
                                     Bilgileri</button>
                                 <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg" alt="icon">
+                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                        alt="icon">
                                 </button>
                             </div>
                             <div>
                                 <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }"
                                     class="h-[37px] text-[#A1A5B7] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
                                 <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }">
-                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg" alt="icon">
+                                    <img class="inline-block sm:hidden w-3.5 h-3.5" src="/assets/icons/arrow-down.svg"
+                                        alt="icon">
                                 </button>
                             </div>
                         </div>
