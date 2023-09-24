@@ -1,5 +1,5 @@
 <template>
-    <Transition>
+    <Transition >
         <div class="fixed top-[10%] left-0">
             <button @click="toggleNav" v-if="!isActive"
                 class="border cursor-pointer border-[#181C32] top-12 bg-[#181C32] rounded-r-[6px]  h-8 w-8 flex items-center absolute p-[5px] left-0">
@@ -71,27 +71,24 @@ const checkWindowWidth = () => {
 };
 
 onMounted(() => {
-    checkWindowWidth(); // Initial check for sidebar apperance
+    checkWindowWidth(); // Initial check for sidebar appearance
 });
 </script> 
 
 <style>
 .slide-enter {
-    transform: translate(100%, 0);
+  transform: translateX(-100%);
 }
 
-.slide-enter-to {
-    transform: translate(0, 0);
+.slide-enter-active {
+  transition: all .3s ease-in;
 }
 
-/* Slide enter leave transition */
-.slide-enter-active,
 .slide-leave-active {
-    transition: transform 0.4s ease-in-out;
+  transition: all .3s ease-in;
 }
-
 .slide-leave-to {
-    transform: translate(-100%, 0);
+  transform: translateX(-100%);
 }
 
 .v-enter-active,
