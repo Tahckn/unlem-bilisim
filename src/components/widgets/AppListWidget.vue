@@ -66,6 +66,24 @@
 
 <script setup lang="ts">
 import AppsAvatarCard from '../AppsAvatarCard.vue';
+import { getApplications, fetchData } from '@/api';
+
+getApplications()
+    .then((applications) => {
+        console.log('API verisi:', applications);
+    })
+    .catch((error) => {
+        console.error('Hata:', error);
+    });
+
+fetchData()
+    .then((data) => {
+        console.log('Data from the API:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
 
 </script>
 

@@ -15,17 +15,17 @@ const router = createRouter({
     // },
     {
       path: "/apps/user-detail",
-      name: "/MuhasebebeTik",
+      name: "MuhasebebeTik",
       component: () => import("../views/apps/AppsUserDetailView.vue"),
     },
     {
       path: "/my-information",
-      name: "/Bilgilerim",
+      name: "Bilgilerim",
       component: () => import("../views/apps/AppsMyInformation.vue"),
     },
     {
       path: "/my-transactions",
-      name: "/islemler",
+      name: "islemler",
       component: () => import("../views/apps/AppsMyTransactions.vue"),
     },
     { path: '/', redirect: '/apps' }
