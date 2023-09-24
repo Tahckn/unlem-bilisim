@@ -388,7 +388,7 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
-                        <label for="e-" class=" ml-[10px] text-[#A1A5B7] font-semibold">Hesabımın devre dışı bırakılmasını
+                        <label for="e-" class=" ml-[10px] text-[13px] md:text-[15px] text-[#A1A5B7] font-semibold">Hesabımın devre dışı bırakılmasını
                             onaylıyorum.</label>
                     </div>
                 </div>
