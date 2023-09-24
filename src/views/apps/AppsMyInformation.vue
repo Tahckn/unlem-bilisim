@@ -145,7 +145,7 @@
                             İki Faktörlü Doğrulama (2FA) <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
-                    <div class="flex items-start gap-x-[20px]">
+                    <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
                         <!-- checkboxes -->
                         <div class="flex items-center mb-4">
                             <input id="e-posta" type="checkbox" value=""
@@ -274,7 +274,7 @@
                     </div>
                 </div>
                 <!-- sistem checkbox -->
-                <div class="flex items-start gap-x-[20px]">
+                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
@@ -297,7 +297,7 @@
                     </div>
                 </div>
                 <!-- duyuru checkbox -->
-                <div class="flex items-start gap-x-[20px]">
+                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
@@ -320,7 +320,7 @@
                     </div>
                 </div>
                 <!-- bakim checkbox -->
-                <div class="flex items-start gap-x-[20px]">
+                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
@@ -343,7 +343,7 @@
                     </div>
                 </div>
                 <!-- bakim checkbox -->
-                <div class="flex items-start gap-x-[20px]">
+                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
