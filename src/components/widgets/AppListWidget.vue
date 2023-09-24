@@ -66,7 +66,7 @@
 
 <script setup lang="ts">
 import AppsAvatarCard from '../AppsAvatarCard.vue';
-import { getApplications, fetchData } from '@/api';
+import { getApplications, fetchData, createApplication } from '@/api';
 
 getApplications()
     .then((applications) => {
@@ -83,6 +83,42 @@ fetchData()
     .catch((error) => {
         console.error('Error:', error);
     });
+
+
+// interface ApplicationData {
+//     app_key: string;
+//     name: string;
+//     domain: string;
+//     icon?: string; // Optional property
+//     status: boolean;
+//     private: boolean;
+//     healthCheck: boolean;
+//     healthCheckLink: string;
+//     healthCheckPeriod: number;
+// }
+
+// const exampleApplicationData: ApplicationData = {
+//     app_key: 'applications',
+//     name: 'Uygulamalar',
+//     domain: 'https://gl-apps.unlembilisim.com',
+//     icon: 'https://gl-apps.unlembilisim.com/icon.png',
+//     status: true,
+//     private: true,
+//     healthCheck: true,
+//     healthCheckLink: 'https://gl-apps.unlembilisim.com/health-check',
+//     healthCheckPeriod: 3600,
+// };
+
+// createApplication(exampleApplicationData)
+//     .then((newApplication) => {
+//         console.log('New Application Created:', newApplication);
+//     })
+//     .catch((error) => {
+//         console.error('Error:', error);
+//     });
+
+
+
 
 
 </script>
