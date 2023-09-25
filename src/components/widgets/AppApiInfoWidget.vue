@@ -134,7 +134,7 @@
         <!-- Private Project  -->
         <div class="flex w-full items-center gap-y-[10px] md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
             <div class="flex w-[175px] gap-x-[5px] items-center">
-                <p class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px]">
+                <p class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold sm:leading-[18px] tracking-[-0.18px]">
                     Kapalı Proje ( Private )<span class="text-danger font-semibold">*</span></p>
                 <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
             </div>

@@ -28,7 +28,7 @@ export async function login() {
     };
 
     const headers = {
-      'UB-App': 'application',
+      'UB-App': 'applications',
     };
 
     const response = await axios.post(logUrl, loginData, { headers });

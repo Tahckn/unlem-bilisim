@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row items-start md:mr-[68px]">
+    <div class="flex flex-row items-start">
         <div class="flex flex-col w-full">
             <div class="flex">
                 <main class="p-[20px] w-full overflow-auto gap-y-[10px] flex flex-col border border-[#F1F1F2] rounded-xl">
@@ -85,84 +85,79 @@
 
                         <div
                             class="flex sm:gap-x-[20px] md:gap-x-[29px] items-center justify-between sm:items-start w-full">
+                            <!-- GENEL BAKIS  -->
                             <div>
-                                <button @click="navGenel" :class="{ 'active': activeButton === 1 }"
-                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Genel
-                                    Bakış</button>
-                                <button @click="navGenel" :class="{ 'active': activeButton === 1 }">
-                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/eye.svg"
-                                        alt="icon">
-                                </button>
+                                <router-link :to="{ name: 'GeneralOverview' }">
+                                    <button :class="{ active: isActive('Genel Bakış') }"
+                                        class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Genel
+                                        Bakış</button>
+                                </router-link>
+                                <router-link :to="{ name: 'GeneralOverview' }">
+                                    <button :class="{ active: isActive('Genel Bakış') }">
+                                        <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/eye.svg"
+                                            alt="icon">
+                                    </button>
+                                </router-link>
                             </div>
-
+                            <!-- UYGULAMA BILGILERI  -->
                             <div>
-                                <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }"
-                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Uygulama
-                                    Bilgileri</button>
-                                <button @click="navAppInfo" :class="{ 'active': activeButton === 2 }">
-                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/information.svg"
-                                        alt="icon">
-                                </button>
+                                <router-link :to="{ name: 'ApplicationInfo' }">
+                                    <button :class="{ active: isActive('Uygulama Bilgileri') }"
+                                        class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Uygulama
+                                        Bilgileri</button>
+                                </router-link>
+                                <router-link :to="{ name: 'ApplicationInfo' }">
+                                    <button :class="{ active: isActive('Uygulama Bilgileri') }">
+                                        <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/information.svg"
+                                            alt="icon">
+                                    </button>
+                                </router-link>
+                            </div>
+                            <!-- BAGLI UYGULAMALAR -->
+                            <div>
+                                <router-link :to="{ name: 'ConnectedApplications' }">
+                                    <button :class="{ active: isActive('Bağlı Uygulamalar') }"
+                                        class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Bağlı
+                                        Uygulamalar</button>
+                                </router-link>
+                                <router-link :to="{ name: 'ConnectedApplications' }">
+                                    <button :class="{ active: isActive('Bağlı Uygulamalar') }">
+                                        <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/connected.svg"
+                                            alt="icon">
+                                    </button>
+                                </router-link>
                             </div>
                             <div>
-                                <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }"
-                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Bağlı
-                                    Uygulamalar</button>
-                                <button @click="navConnectedApps" :class="{ 'active': activeButton === 3 }">
-                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/connected.svg"
-                                        alt="icon">
-                                </button>
+                                <!-- API BILGILERI  -->
+                                <router-link :to="{ name: 'APIInfo' }">
+                                    <button :class="{ active: isActive('API Bilgileri') }"
+                                        class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">API
+                                        Bilgileri</button>
+                                </router-link>
+                                <router-link :to="{ name: 'APIInfo' }">
+                                    <button :class="{ active: isActive('API Bilgileri') }">
+                                        <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/api.svg"
+                                            alt="icon">
+                                    </button>
+                                </router-link>
                             </div>
                             <div>
-                                <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }"
-                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">API
-                                    Bilgileri</button>
-                                <button @click="navApiInfo" :class="{ 'active': activeButton === 4 }">
-                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/api.svg"
-                                        alt="icon">
-                                </button>
-                            </div>
-                            <div>
-                                <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }"
-                                    class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
-                                <button @click="navConfiguration" :class="{ 'active': activeButton === 5 }">
-                                    <img class="inline-block mb-2 sm:hidden w-4 h-4" src="/assets/icons/configuration.svg"
-                                        alt="icon">
-                                </button>
+                                <!-- YAPILANDIRMA  -->
+                                <router-link :to="{ name: 'Configuration' }">
+                                    <button :class="{ active: isActive('Yapılandırma') }"
+                                        class="h-[37px] text-[#A1A5B7] sm:text-[13px] md:text-[16px] font-semibold leading-[12px] md:leading-[16px] whitespace-nowrap hidden sm:flex flex-col pb-[20px] items-center justify-center">Yapılandırma</button>
+                                </router-link>
+                                <router-link :to="{ name: 'Configuration' }">
+                                    <button :class="{ active: isActive('Yapılandırma') }">
+                                        <img class="inline-block mb-2 sm:hidden w-4 h-4"
+                                            src="/assets/icons/configuration.svg" alt="icon">
+                                    </button>
+                                </router-link>
                             </div>
                         </div>
                     </section>
                     <!-- Routes  -->
-                    <Transition>
-                        <!-- Security Summary  -->
-                        <AppsSecuritySummaryWidget v-if="route === obj.path1" />
-                    </Transition>
-                    <Transition>
-                        <!-- Whislisht  -->
-                        <AppsWhislistWidget v-if="route === obj.path1" />
-                    </Transition>
-                    <Transition>
-                        <!-- Sessions  -->
-                        <AppsSessionsWidget v-if="route === obj.path1" />
-                    </Transition>
-                    <Transition>
-                        <!-- App Info  -->
-                        <AppInfoWidget v-if="route === obj.path2" />
-                    </Transition>
-                    <Transition>
-                        <!-- Api Info  -->
-                        <AppApiInfoWidget v-if="route === obj.path4" />
-                    </Transition>
-
-                    <Transition>
-                        <!--  Configuration  -->
-                        <AppConfigurationWidget v-if="route === obj.path5" />
-                    </Transition>
-
-                    <Transition>
-                        <!-- <Connected Apps  -->
-                        <AppConnectedAppsWidget v-if="route === obj.path3" />
-                    </Transition>
+                    <RouterView />
                 </main>
             </div>
         </div>
@@ -170,49 +165,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue';
-import AppsSecuritySummaryWidget from '@/components/widgets/AppsSecuritySummaryWidget.vue';
-import AppsWhislistWidget from '@/components/widgets/AppsWhislistWidget.vue';
-import AppsSessionsWidget from '@/components/widgets/AppsSessionsWidget.vue';
-import AppInfoWidget from '@/components/widgets/AppInfoWidget.vue';
-import AppApiInfoWidget from '@/components/widgets/AppApiInfoWidget.vue';
-import AppConfigurationWidget from '@/components/widgets/AppConfigurationWidget.vue';
-import AppConnectedAppsWidget from '@/components/widgets/AppConnectedAppsWidget.vue';
+import { RouterView, useRoute, RouterLink } from 'vue-router';
 
-const obj = reactive({
-    path1: 'navGenel',
-    path2: 'navAppInfo',
-    path3: 'navConnectedApps',
-    path4: 'navApiInfo',
-    path5: 'navConfiguration',
-});
+const route = useRoute();
 
-const route = ref(obj.path1);
-
-const navGenel = () => {
-    route.value = obj.path1;
+const routes = {
+    GeneralOverview: 'Genel Bakış',
+    ApplicationInfo: 'Uygulama Bilgileri',
+    ConnectedApplications: 'Bağlı Uygulamalar',
+    APIInfo: 'API Bilgileri',
+    Configuration: 'Yapılandırma',
 };
 
-const navAppInfo = () => {
-    route.value = obj.path2;
+const isActive = (routeName: string) => {
+    return routeName === routes[route.name];
 };
-const navConnectedApps = () => {
-    route.value = obj.path3;
-};
-const navApiInfo = () => {
-    route.value = obj.path4;
-};
-const navConfiguration = () => {
-    route.value = obj.path5;
-};
-
-const activeButton = computed(() => {
-    if (route.value === obj.path1) return 1;
-    if (route.value === obj.path2) return 2;
-    if (route.value === obj.path3) return 3;
-    if (route.value === obj.path4) return 4;
-    if (route.value === obj.path5) return 5;
-});
 
 </script>
 
@@ -221,4 +188,16 @@ const activeButton = computed(() => {
     border-bottom: 2px solid #3E97FF;
     color: #3E97FF;
 }
+
+.active img {
+    filter: invert(41%) sepia(81%) saturate(1497%) hue-rotate(202deg) brightness(94%) contrast(88%);
+    /* You can adjust the filter values to get the desired color effect */
+}
+
+button.active,
+button:not(active)
+{
+    background-color: white;
+}
+
 </style>

@@ -95,11 +95,12 @@
 <script setup lang="ts">
 import {ref} from 'vue'
 import type {Ref} from 'vue'
-import VueApexCharts from "vue3-apexcharts";
+// @ts-ignore
+import VueApexCharts from 'vue3-apexcharts';
 
 const chartOptions: Ref<any> = ref({
   chart: {
-    id: "vuechart-example",
+    id: "uygulama-islem-grafik",
   },
   xaxis: {
     categories: ['9AM', '12PM', '15PM', '18PM', '19PM'],

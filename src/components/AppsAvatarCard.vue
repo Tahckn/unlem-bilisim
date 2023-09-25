@@ -30,16 +30,25 @@
         </div>
         <!-- Details  -->
         <div class="w-full flex items-center justify-center">
-            <button
-                @click="router.push({ path: '/apps/user-detail' })"
-                class="py-[12px] px-[16px] text-primary text-[13px] font-bold leading-[14px] rounded-[6px] bg-[#EEF6FF]">
-                Detay 
-            </button>
+            <router-link :to="'/apps/user-detail/' + id + '/general-overview'">
+                <button
+                    class="py-[12px] px-[16px] text-primary text-[13px] font-bold leading-[14px] rounded-[6px] bg-[#EEF6FF]">
+                    Detay
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-const router = useRouter();
+import { RouterLink } from 'vue-router';
+import type { PropType } from 'vue';
+const props = defineProps({
+    id: {
+        type: Number as PropType<number>, // Specify the prop type
+        required: true, // Make it required if necessary
+    },
+});
+
+const id = props.id;
 </script>

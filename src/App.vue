@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import { RouterView, useRoute } from 'vue-router'
-import { computed, ref,watchEffect } from 'vue'
-import AppsHeadSection from '@/components/AppsHeadSection.vue';
-import AppsNavbar from '@/components/AppsNavbar.vue';
-import AppsSidebar from '@/components/AppsSidebar.vue';
-import AppsSidebarRight from '@/components/AppsSidebarRight.vue';
-import AppListWidget from '@/components/widgets/AppListWidget.vue';
+import { RouterView } from 'vue-router';
+import { ref, watchEffect } from 'vue';
+import Layout from './components/widgets/Layout.vue';
 
-const route = useRoute();
-const path = computed(() => route.path)
+
 const isActive = ref(true);
 
-const toggleSidebar = (newState: boolean) => {
-  isActive.value = newState;
-};
 
 watchEffect(() => {
   if (window.innerWidth < 768) {
@@ -27,25 +19,12 @@ watchEffect(() => {
 
 </script>
 <template>
-  <div class="flex flex-row items-start ">
-    <AppsSidebar :isActive="isActive" @toggle-sidebar="toggleSidebar" class="h-screen fixed z-40" />
-    <div class="flex flex-col w-full" :style="{ marginLeft: isActive ? '300px' : '0' }">
-      <AppsNavbar class="fixed" :style="{ paddingRight: isActive ? '320px' : '' }" />
-      <div class="flex">
-        <main
-          class="p-[10px] sm:p-[20px] md:mr-[68px] w-full gap-y-[10px] flex flex-col border-x border border-[#F1F1F2] rounded-xl md:mb-0 mb-[68px] mt-[65px]">
-          <!-- Header Section  -->
-          <AppsHeadSection />
-          <!-- Widgets  -->
-          <div>
-            <RouterView />
-          </div>
-          <!-- List  -->
-          <AppListWidget v-if="path === '/apps'" />
-        </main>
-        <AppsSidebarRight />
-      </div>
-    </div>
+  <div>
+    <!-- TODO if auth gonna be added  -->
+    <Layout>
+      <!-- Content inside the layout -->
+      <RouterView />
+    </Layout>
   </div>
 </template>
 

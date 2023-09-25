@@ -16,8 +16,8 @@
     <div class="mx-auto w-full px-[10px] md:px-[20px] py-[20px] shadow-sm rounded-[12px] flex flex-col gap-y-[20px]">
         <!-- Cards -->
         <div class="grid grid-cols-1 gap-y-[30px] md:grid-cols-2 lg:grid-cols-3 gap-x-[30px]">
-            <div v-for="i in 3">
-                <AppsAvatarCard />
+            <div v-for="i in 3" :key="i">
+                <AppsAvatarCard :id="i"/>
             </div>
         </div>
         <!-- Footer  -->
@@ -68,8 +68,8 @@
 import AppsAvatarCard from '../AppsAvatarCard.vue';
 import { getApplications, createApplication, login } from '@/api';
 
-const applications = await getApplications();
-console.log('Applications:', applications);
+// const applications = await getApplications();
+// console.log('Applications:', applications);
 
 
 // interface ApplicationData {
