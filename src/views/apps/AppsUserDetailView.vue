@@ -177,8 +177,10 @@ const routes = {
     Configuration: 'Yapılandırma',
 };
 
+//type assertion in TypeScript
+//This ensures TypeScript understands that route.name is used as an index to access the routes object.
 const isActive = (routeName: string) => {
-    return routeName === routes[route.name];
+    return routeName === routes[route.name as keyof typeof routes];
 };
 
 </script>
