@@ -1,18 +1,65 @@
 import axios from 'axios';
 
-// API URL
+// API URLs and Keys
 const apiUrl = 'http://gl-apps.unlemcloud.com/api';
-
-// API KEY AND DOMAIN
-const appKey = 'applications';
+const logUrl = 'http://auth.unlemcloud.com/api/auth/login';
+const appKey = 'applications'; // Update with your actual app key
 const domain = 'http://localhost:5173/apps';
 
-// Get Applications
-export async function getApplications(accessToken) {
+// Credentials
+const email = 'orhan.basli@unlembilisim.com';
+const password = 'Orge1234*';
+
+// Store the token in localStorage
+function setAuthToken(token: any) {
+  localStorage.setItem('token', token);
+}
+
+// Retrieve the token from localStorage 
+export function getAuthToken() {
+  return localStorage.getItem('token');
+}
+
+export async function login() {
   try {
+    const loginData = {
+      email: email,
+      password: password,
+    };
+
     const headers = {
       'UB-App': 'application',
-      'Authorization': `${accessToken}`,
+    };
+
+    const response = await axios.post(logUrl, loginData, { headers });
+
+    if (response.status === 200) {
+      const token = response.data.extra.token;
+      setAuthToken(token);
+
+      console.log('Token:', token);
+      return token;
+    } else {
+      console.error('Login API error:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('Login request error:', error);
+    throw error;
+  }
+}
+
+export async function getApplications() {
+  try {
+    const token = getAuthToken();
+
+    if (!token) {
+      throw new Error('No token available. Please login first.');
+    }
+    
+    const headers = {
+      'UB-App': 'application',
+      'Authorization': `${token}`,
     };
 
     const response = await axios.get(`${apiUrl}/applications`, {
