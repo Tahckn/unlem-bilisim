@@ -5,23 +5,25 @@
         <!-- header  -->
         <div class="flex w-full items-center border-b pb-[20px] border-[#E1E3EA]">
             <div class="flex gap-x-[5px] items-center justify-center">
-                <h2 class="text-[#181C32] text-[14px] leading-[12px]  md:text-[18px] font-semibold md:leading-[16px]">Bağlı Uygulamalar</h2>
+                <h2 class="text-[#181C32] text-[14px] leading-[12px]  md:text-[18px] font-semibold md:leading-[16px]">Bağlı
+                    Uygulamalar</h2>
                 <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
             </div>
             <div class="ml-auto">
-                <button @click="openNew"
+                <button @click.stop @click="openNew"
                     class="bg-primary px-[14px] py-[10px] md:px-[16px] md:py-[12px] rounded-md text-white text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px]">
                     Yeni Ekle
                 </button>
                 <!-- Yeni ekle card  -->
                 <Transition>
                     <div v-if="isActive"
-                        class="absolute z-40 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  bg-white rounded-md border border-[#E1E3EA] py-[20px] lg:w-[600px] md:w-[500px] w-auto">
+                        class="new-card absolute z-40 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  bg-white rounded-md border border-[#E1E3EA] py-[20px] lg:w-[600px] md:w-[500px] w-full">
                         <div class="flex flex-col items-start">
                             <!-- header  -->
                             <div class="flex justify-between px-[20px] w-full pb-[20px]">
                                 <div class="flex gap-x-[5px] items-center">
-                                    <h2 class="text-[12px] md:text-[16px] font-semibold leading-[16px] text-[#181C32]">Yeni Ekle</h2>
+                                    <h2 class="text-[12px] md:text-[16px] font-semibold leading-[16px] text-[#181C32]">Yeni
+                                        Ekle</h2>
                                     <img class="w-[14px] h-[14px]" src="/assets/icons/attention.svg" alt="attention">
                                 </div>
                                 <!-- Close button  -->
@@ -31,13 +33,15 @@
                             <div class="w-full border-t border-[#E1E3EA]">
                                 <div class="px-[20px] py-[20px] flex flex-col gap-y-[10px]">
                                     <div class="flex space-x-[5px]">
-                                        <h3 class="text-[#3F4254] font-semibold text-[11px] leading-[12px] md:leading-[14px] md:text-[13px]">
+                                        <h3
+                                            class="text-[#3F4254] font-semibold text-[11px] leading-[12px] md:leading-[14px] md:text-[13px]">
                                             Uygulama
                                         </h3>
                                         <img class="w-[14px] h-[14px]" src="/assets/icons/attention.svg" alt="attention">
                                     </div>
                                     <div>
-                                        <input class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md "
+                                        <input
+                                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md "
                                             placeholder="Uygulama Seçiniz." type="text">
                                     </div>
                                 </div>
@@ -65,7 +69,8 @@
             </div>
             <!-- Definition of Service  -->
             <div class="w-full flex items-center px-[20px]">
-                <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">Definition of Service</p>
+                <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">
+                    Definition of Service</p>
                 <button
                     class="text-[#A1A5B7] bg-[#F9F9F9] text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px] items-center flex ml-auto px-[14px] py-[10px] md:px-[12px] md:py-[13px] rounded-md gap-x-[10px]">
                     İşlem
@@ -74,7 +79,8 @@
             </div>
             <!-- Localization Service  -->
             <div class="w-full flex items-center px-[20px]">
-                <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">Localization Service</p>
+                <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">
+                    Localization Service</p>
                 <button
                     class="text-[#A1A5B7] bg-[#F9F9F9] text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px] items-center flex ml-auto px-[14px] py-[10px] md:px-[12px] md:py-[13px] rounded-md gap-x-[10px]">
                     İşlem
@@ -86,21 +92,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-const isActive = ref(false)
+const isActive = ref(false);
 const isActiveBackdrop = ref(false);
 
 const openNew = () => {
-    isActive.value = true
+    isActive.value = true;
     isActiveBackdrop.value = true; // Show the backdrop
-}
+};
+
+onMounted(() => {
+    document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', handleClickOutside);
+});
 
 const closeNew = () => {
-    isActive.value = false
+    isActive.value = false;
     isActiveBackdrop.value = false; // Hide the backdrop
-}
+};
 
+const handleClickOutside = (event: any) => {
+    const newCard = document.querySelector(".new-card"); // Adjust the selector as per your actual CSS
+    if (newCard && !newCard.contains(event.target)) {
+        closeNew();
+    }
+};
 
 
 

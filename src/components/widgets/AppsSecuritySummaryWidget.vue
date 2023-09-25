@@ -70,7 +70,7 @@
                     Uygulama İşlem Grafiği
                 </h2>
                 <div class="md:ml-auto p-[10px] flex-row border-[#F1F1F2] border rounded-md gap-x-[10px] flex">
-                    <div class="px-[12px] py-[9px] bg-[#F1F1F2] rounded-md">
+                    <div class="px-[12px] py-[9px] bg-[#F1F1F2] rounded-md" a>
                         <p class="text-[12px] font-semibold leading-[12px] text-[#7E8299]">Tümü</p>
                     </div>
                     <div class="px-[12px] py-[9px] bg-white rounded-md">
@@ -81,12 +81,37 @@
                     </div>
                 </div>
             </div>
-        <!-- Graph  -->
-        <div class="w-full h-[241px]">
+            <!-- Graph  -->
+            <div class="w-full h-auto">
+                <div id="chart">
+                    <VueApexCharts type="area" height="241" :options="chartOptions" :series="series"></VueApexCharts>
+                </div>
+            </div>
         </div>
-    </div>
-</section></template>
+    </section>
+</template>
+
 
 <script setup lang="ts">
+import {ref} from 'vue'
+import type {Ref} from 'vue'
+import VueApexCharts from "vue3-apexcharts";
 
+const chartOptions: Ref<any> = ref({
+  chart: {
+    id: "vuechart-example",
+  },
+  xaxis: {
+    categories: ['9AM', '12PM', '15PM', '18PM', '19PM'],
+  },
+});
+
+const series: Ref<any[]> = ref([
+  {
+    name: "",
+    data: [30, 45, 60, 75, 90, 105, 120],
+  },
+
+]);
 </script>
+

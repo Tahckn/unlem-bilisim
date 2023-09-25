@@ -66,9 +66,15 @@
 
 <script setup lang="ts">
 import AppsAvatarCard from '../AppsAvatarCard.vue';
-import { getApplications, fetchData, createApplication } from '@/api';
+import { getApplications, createApplication } from '@/api';
 
-getApplications()
+const accessToken = 'YOUR_ACCESS_TOKEN';
+
+// const applications = await getApplications(accessToken);
+
+// console.log('Applications:', applications);
+
+getApplications('accessToken')
     .then((applications) => {
         console.log('API verisi:', applications);
     })
@@ -76,13 +82,6 @@ getApplications()
         console.error('Hata:', error);
     });
 
-fetchData()
-    .then((data) => {
-        console.log('Data from the API:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
 
 
 // interface ApplicationData {

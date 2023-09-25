@@ -12,17 +12,17 @@
             <!-- My Information -->
             <div class="flex flex-col gap-y-[20px] w-full border-b pb-[20px]">
                 <!-- Avatar  -->
-                <div class="flex flex-row gap-x-[200px] items-start">
+                <div class="flex flex-col sm:flex-row gap-y-[5px] md:gap-x-[120px] lg:gap-x-[200px] items-start">
                     <div class="flex w-[175px] gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Avatar</p>
-                        <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
+                        <img src="/assets/icons/attention.svg" class=" md:w-[20px] md:h-[20px]" alt="attention">
                     </div>
                     <div>
                         <div class="relative">
-                            <img class="pb-[15px]" src="/assets/apps/img/user-red.png" alt="user-img">
-                            <div class="absolute -bottom-1 left-5 flex flex-row">
+                            <img class="w-[70px] md:w-auto md:h-auto pb-[15px]" src="/assets/apps/img/user-red.png" alt="user-img">
+                            <div class="absolute -bottom-1 left-1 md:left-5 flex flex-row">
                                 <img src="/assets/icons/Close.svg" alt="close">
                                 <img src="/assets/icons/Edit.svg" alt="edit">
                             </div>
@@ -33,8 +33,8 @@
                     </div>
                 </div>
                 <!-- Ad Soyad  -->
-                <div class="flex w-full gap-x-5px flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
-                    <div class="flex w-[175px] gap-x-[5px] items-center ">
+                <div class="flex w-full gap-x-[5px] flex-col gap-y-[10px]  md:flex-row md:gap-x-[120px] lg:gap-x-[200px]">
+                    <div class="flex flex-shrink-0 w-[175px] gap-x-[5px] items-center ">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Ad Soyad
@@ -42,14 +42,14 @@
                         </p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
-                    <div class="flex items-center justify-between">
-                        <div class="">
+                    <div class="flex flex-row flex-shrink justify-between items-start gap-y-[15px] gap-x-[15px]">
+                        <div class="w-full">
                             <input type="text"
-                                class="text-[#7E8299] sm:w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                                class="text-[#7E8299] w-full sm:w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                         </div>
-                        <div class=" ">
+                        <div class="w-full">
                             <input type="text"
-                                class="text-[#7E8299] sm:w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
+                                class="text-[#7E8299] w-full sm:w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md ">
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                             İki Faktörlü Doğrulama (2FA) <span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
-                    <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
+                    <div class="flex sm:justify-end w-full flex-row  items-start gap-x-[20px]">
                         <!-- checkboxes -->
                         <div class="flex items-center mb-4">
                             <input id="e-posta" type="checkbox" value=""
@@ -180,13 +180,13 @@
             <div class="flex flex-col gap-y-[5px] md:flex-row items-start border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
                 <!-- Eposta Adresi  -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-full gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             E-posta Adresi<span class="text-danger font-semibold">*</span></p>
                         <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                     </div>
-                    <div class="flex gap-x-[5px] items-center">
+                    <div class="flex gap-x-[5px] items-cenmd:gap-x-[120px] lg:gap-x-[200px]ter">
                         <p class="text-[#A1A5B7] text-[14px] font-semibold">fikret.cumaoglu@unlembilisim.com</p>
                         <p class="p-[4px] text-[12px] rounded text-success font-semibold bg-[#E8FFF3]">Doğrulandı</p>
                     </div>
@@ -200,7 +200,7 @@
             <div class="flex flex-col gap-y-[5px] md:flex-row items-start border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
                 <!-- Telefon Numarası -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-full gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Telefon Numarası<span class="text-danger font-semibold">*</span></p>
@@ -220,7 +220,7 @@
             <div class="flex flex-col gap-y-[5px] md:flex-row items-start border-b border-[#E1E3EA] pb-[10px] border-dashed justify-between">
                 <!-- sifre -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-full gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Şifre<span class="text-danger font-semibold">*</span></p>
@@ -240,7 +240,7 @@
             <div class="py-[16px] gap-y-[10px] flex-col md:items-start items-center md:flex-row rounded-[7px] bg-[#EEF6FF] px-[14px] flex border border-dashed border-primary">
                 <img class="mr-[15px] w-[25px] h-[56px]" src="/assets/icons/shield.svg" alt="shield">
 
-                <div class="flex flex-col gap-y-[5px]">
+                <div class="flex text-center md:text-left flex-col gap-y-[5px]">
                     <p class="">Hesabını Güvenli Hale Getir</p>
                     <p class="text-[#7E8299] text-[13px] font-semibold leading-[14px]">İki faktörlü kimlik doğrulama,
                         hesabınıza ekstra bir güvenlik katmanı ekler. Giriş yapmak için ek olarak 6 haneli bir kod
@@ -263,10 +263,10 @@
                     <img src="/assets/icons/attention.svg" class="w-[20px] h-[20px]" alt="attention">
                 </div>
             </div>
-            <div class="flex items-center pb-[10px] border-dashed justify-between">
+            <div class="flex sm:flex-row flex-col gap-y-[10px] items-start pb-[10px] border-dashed justify-between">
                 <!--Sistem Bildirimleri  -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-auto gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Sistem Bildirimleri</p>
@@ -274,7 +274,7 @@
                     </div>
                 </div>
                 <!-- sistem checkbox -->
-                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
+                <div class="flex sm:justify-end w-full flex-row  items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
@@ -286,10 +286,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center pb-[10px] border-dashed justify-between">
+            <div class="flex sm:flex-row flex-col gap-y-[10px] items-start pb-[10px] border-dashed justify-between">
                 <!--Sistem Duyurulari  -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-full gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Sistem Duyurları</p>
@@ -297,7 +297,7 @@
                     </div>
                 </div>
                 <!-- duyuru checkbox -->
-                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
+                <div class="flex sm:justify-end w-full flex-row  items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
@@ -309,10 +309,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center pb-[10px] border-dashed justify-between">
+            <div class="flex sm:flex-row flex-col gap-y-[10px] items-start pb-[10px] border-dashed justify-between">
                 <!--Bakim Duyurulari  -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-full gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Bakım Duyuruları </p>
@@ -320,7 +320,7 @@
                     </div>
                 </div>
                 <!-- bakim checkbox -->
-                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
+                <div class="flex sm:justify-end w-full flex-row  items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
@@ -332,10 +332,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center pb-[10px] border-dashed justify-between">
+            <div class="flex sm:flex-row flex-col gap-y-[10px] items-start pb-[10px] border-dashed justify-between">
                 <!--Güncelleme Duyuruları   -->
                 <div>
-                    <div class="flex mb-[10px] w-[200px] gap-x-[5px] items-center">
+                    <div class="flex mb-[10px] w-full gap-x-[5px] items-center">
                         <p
                             class="text-[#5E6278] text-[13px] leading-[12px] md:text-[18px] font-semibold lg:leading-[18px] tracking-[-0.18px] whitespace-nowrap">
                             Güncelleme Duyuruları </p>
@@ -343,7 +343,7 @@
                     </div>
                 </div>
                 <!-- bakim checkbox -->
-                <div class="flex sm:flex-row flex-col items-start gap-x-[20px]">
+                <div class="flex sm:justify-end w-full flex-row  items-start gap-x-[20px]">
                     <!-- checkboxes -->
                     <div class="flex items-center mb-4">
                         <input id="e-posta" type="checkbox" value="" class="text-white accent-primary w-[30px] h-[30px]">
