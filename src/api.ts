@@ -56,10 +56,10 @@ export async function getApplications() {
     if (!token) {
       throw new Error('No token available. Please login first.');
     }
-    
+
     const headers = {
-      'UB-App': 'application',
-      'Authorization': `${token}`,
+      'UB-App': 'applications',
+      'Authorization':`Bearer ${token}`,
     };
 
     const response = await axios.get(`${apiUrl}/applications`, {
