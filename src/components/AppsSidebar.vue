@@ -1,5 +1,5 @@
 <template>
-    <Transition >
+    <Transition>
         <div class="fixed top-[10%] left-0">
             <button @click="toggleNav" v-if="!isActive"
                 class="border cursor-pointer border-[#181C32] top-12 bg-[#181C32] rounded-r-[6px]  h-8 w-8 flex items-center absolute p-[5px] left-0">
@@ -49,46 +49,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 
 const { isActive: propIsActive } = defineProps(['isActive']);
-const emit = defineEmits();
-
+const emits = defineEmits(['toggle-sidebar']);
 const isActive = ref(propIsActive);
 
 
 const toggleNav = () => {
     isActive.value = !isActive.value;
-    emit('toggle-sidebar', isActive.value); // Emit the event to notify the parent component
+    emits('toggle-sidebar', isActive.value); // Emit the event to notify the parent component
 };
 
-const checkWindowWidth = () => {
-    if (window.innerWidth < 768) {
-        isActive.value = false;
-    } else {
-        isActive.value = true;
-    }
-};
-
-onMounted(() => {
-    checkWindowWidth(); // Initial check for sidebar appearance
-});
 </script> 
 
 <style>
 .slide-enter {
-  transform: translateX(-100%);
+    transform: translateX(-100%);
 }
 
 .slide-enter-active {
-  transition: all .3s ease-in;
+    transition: all .3s ease-in;
 }
 
 .slide-leave-active {
-  transition: all .3s ease-in;
+    transition: all .3s ease-in;
 }
+
 .slide-leave-to {
-  transform: translateX(-100%);
+    transform: translateX(-100%);
 }
 
 .v-enter-active,

@@ -3,6 +3,7 @@ import axios from 'axios';
 // API URLs and Keys
 const apiUrl = 'http://gl-apps.unlemcloud.com/api';
 const logUrl = 'http://auth.unlemcloud.com/api/auth/login';
+const appDetailUrl = 'http://gl-apps.unlemcloud.com/api/applications/show/';
 const appKey = 'applications'; // Update with your actual app key
 const domain = 'http://localhost:5173/apps';
 
@@ -20,7 +21,8 @@ export function getAuthToken() {
   return localStorage.getItem('token');
 }
 
-export async function login() {
+// fetch token
+async function login() {
   try {
     const loginData = {
       email: email,
@@ -49,31 +51,115 @@ export async function login() {
   }
 }
 
-export async function getApplications() {
+// goint to delete after api fix
+export async function getApplicationsWithRetry(maxRetries = 5) {
+
+  let retries = 0;
+
+
+  while (retries < maxRetries) {
+    try {
+      let token = getAuthToken();
+
+      if (!token) {
+        token = await login();
+      }
+
+      const headers = {
+        'UB-App': 'applications',
+        'Authorization': `Bearer ${token}`,
+      };
+
+      const response = await axios.get(`${apiUrl}/applications?limit=25`, {
+        params: {
+          app_key: appKey,
+          domain: domain,
+        },
+        headers: headers,
+      });
+
+      if (response.status === 200) {
+        const applications = response.data.extra;
+        return applications;
+      } else {
+        console.error('API hatası:', response.data.errorMessage);
+        throw new Error(response.data.errorMessage);
+      }
+    } catch (error) {
+      console.error('API isteği sırasında bir hata oluştu:', error);
+      retries++;
+      if (retries < maxRetries) {
+        console.log(`Retrying... (Attempt ${retries}/${maxRetries})`);
+      } else {
+        throw error; // Maximum retries reached
+      }
+    }
+  }
+
+  throw new Error(`Maximum retries (${maxRetries}) reached. Unable to get data.`);
+}
+
+//  TODO change this func after api fix 
+
+// export async function getApplications() {
+//   try {
+//     let token = getAuthToken();
+
+//     if (!token) {
+//       token = await login();
+//     }
+
+//     const headers = {
+//       'UB-App': 'applications',
+//       'Authorization':`Bearer ${token}`,
+//     };
+
+//     const response = await axios.get(`${apiUrl}/applications?limit=25`, {
+//       params: {
+//         app_key: appKey,
+//         domain: domain,
+//       },
+//       headers: headers,
+//     });
+
+//     if (response.data.error === 0) {
+//       const applications = response.data.extra;
+//       console.log('Uygulamalar:', applications);
+//       return applications;
+//     } else {
+//       console.error('API hatası:', response.data.errorMessage);
+//       throw new Error(response.data.errorMessage);
+//     }
+//   } catch (error) {
+//     console.error('API isteği sırasında bir hata oluştu:', error);
+//     throw error;
+//   }
+// }
+
+// Get App Detils
+export async function getAppDetailsById(id: any) {
   try {
-    const token = getAuthToken();
+    let token = getAuthToken();
 
     if (!token) {
-      throw new Error('No token available. Please login first.');
+      token = await login();
     }
 
     const headers = {
       'UB-App': 'applications',
-      'Authorization':`Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
     };
 
-    const response = await axios.get(`${apiUrl}/applications`, {
-      params: {
-        app_key: appKey,
-        domain: domain,
-      },
+    const appDetailUrlWithId = `${appDetailUrl}${id}`;
+
+    const response = await axios.get(appDetailUrlWithId, {
       headers: headers,
     });
 
     if (response.data.error === 0) {
-      const applications = response.data.extra.data;
-      console.log('Uygulamalar:', applications);
-      return applications;
+      const appDetails = response.data.extra;
+      console.log('Application Details:', appDetails);
+      return appDetails;
     } else {
       console.error('API hatası:', response.data.errorMessage);
       throw new Error(response.data.errorMessage);
@@ -83,6 +169,7 @@ export async function getApplications() {
     throw error;
   }
 }
+
 
 // App interface 
 interface ApplicationData {

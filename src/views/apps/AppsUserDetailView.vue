@@ -24,7 +24,7 @@
                                 <!-- User Name  -->
                                 <h2
                                     class="text-[#181C32] text-[14px] md:text-[18px] leading-[14px] font-semibold md:leading-[18px] pb-[10px] tracking-[-0.18px]">
-                                    MuhasebeTik</h2>
+                                    {{ application?.name }}</h2>
                                 <!-- Items  -->
                                 <div
                                     class="flex gap-y-[2px] flex-shrink-0 flex-col items-start md:items-center md:flex-row gap-x-[15px] pb-[20px]">
@@ -41,7 +41,7 @@
                                             alt="home">
                                         <p
                                             class="text-[#A1A5B7] text-[12px] md:text-[15px]  whitespace-nowrap font-semibold leading-[16px]">
-                                            muhasebetik.com
+                                            {{ application?.domain }}
                                         </p>
                                     </div>
                                     <div class="flex flex-shrink-0 gap-x-[5px] items-center justify-center">
@@ -60,7 +60,7 @@
                                         <!-- MS  -->
                                         <p
                                             class="text-success whitespace-nowrap text-[12px] leading-[12px]  md:text-[16px] font-semibold md:leading-[16px]">
-                                            102 ms</p>
+                                            {{ getMs() }} ms</p>
                                         <p
                                             class="text-[#A1A5B7] whitespace-nowrap text-[10px] leading-[10px] md:text-[12px] font-semibold md:leading-[12px]">
                                             Cevap Süresi</p>
@@ -70,8 +70,7 @@
                                         class="max-w-auto border-[0.5px] gap-y-[8px] md:gap-y-[5px] border-[#D8D8E5] border-dashed rounded-md px-[15px] py-[11px] flex flex-col items-start">
                                         <p
                                             class="text-[#181C32] whitespace-nowrap leading-[12px] text-[12px] md:text-[16px] font-semibold md:leading-[16px]">
-                                            05.08.2023
-                                            10:36:12</p>
+                                            {{ getLastRequest() }}</p>
                                         <p
                                             class="text-[#A1A5B7] text-[10px] leading-[10px] md:text-[12px] font-semibold md:leading-[12px]">
                                             Son İstek</p>
@@ -165,7 +164,70 @@
 </template>
 
 <script setup lang="ts">
-import { RouterView, useRoute, RouterLink } from 'vue-router';
+import { RouterView, useRoute, RouterLink, useRouter } from 'vue-router';
+import { getAppDetailsById } from '@/api';
+import { onMounted, ref } from 'vue';
+import moment from 'moment';
+
+// loading state
+const isLoading = ref(false);
+
+
+// get id from route
+const router = useRouter();
+const id = router.currentRoute.value.params.id;
+const application = ref<Application | null>(null)
+
+
+// Define TypeScript interfaces
+interface Application {
+    // Define your application properties here
+    id: number;
+    name: string;
+    domain : string
+    healthChecks: HealthCheck[];
+}
+
+// Define HealthCheck interface if not already defined in your API
+interface HealthCheck {
+    // Define health check properties here
+    timing: number;
+    endedAt: string;
+    // Add other properties as needed
+}
+
+
+//GET APP DETAILS
+onMounted(async () => {
+    try {
+        isLoading.value = true;
+        const appData = await getAppDetailsById(id);
+        application.value = appData;
+    } catch (error) {
+        console.error('Error:', error);
+    } finally {
+        isLoading.value = false;
+    }
+});
+
+//Cevap Suresi
+const getMs = () => {
+    if (application.value?.healthChecks && application.value.healthChecks.length > 0) {
+        const lastCheck = application.value.healthChecks[0];
+        const ms = lastCheck.timing;
+        return ms;
+    } else return '-';
+};
+
+// Son istek
+const getLastRequest = () => {
+    if (application.value?.healthChecks && application.value.healthChecks.length > 0) {
+        const lastCheck = application.value.healthChecks[0];
+        const LastRequest = moment(lastCheck.endedAt).format("DD-MM-YYYY HH:mm:ss");
+        return LastRequest;
+    } else return '-';
+};
+
 
 const route = useRoute();
 
@@ -185,7 +247,7 @@ const isActive = (routeName: string) => {
 
 </script>
 
-<style>
+<style scoped>
 .active {
     border-bottom: 2px solid #3E97FF;
     color: #3E97FF;
@@ -197,9 +259,7 @@ const isActive = (routeName: string) => {
 }
 
 button.active,
-button:not(active)
-{
+button:not(.active) {
     background-color: white;
 }
-
 </style>

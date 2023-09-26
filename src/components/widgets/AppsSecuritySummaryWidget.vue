@@ -28,6 +28,7 @@
         </div>
         <!-- Tab Status -->
         <div class="w-full flex flex-col gap-y-[10px] md:gap-y-[0] md:flex-row justify-between items-center">
+            <!-- Basarili islem  -->
             <div
                 class="md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
                 <p
@@ -39,16 +40,8 @@
                     36.966
                 </p>
             </div>
-            <div
-                class=" md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
-                <p
-                    class="text-warning font-semibold leading-[18px] tracking-[-0.18px] text-[14px] md:text-[15px] lg:text-[18px]">
-                    Bekleyen
-                    İşlem</p>
-                <p
-                    class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
-                    72</p>
-            </div>
+            <!-- Basarisiz islem  -->
+
             <div
                 class=" md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
                 <p
@@ -59,6 +52,17 @@
                     class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
                     291
                 </p>
+            </div>
+            <!-- Bir sonraki islem  -->
+            <div
+                class=" md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
+                <p
+                    class="text-warning font-semibold leading-[18px] tracking-[-0.18px] text-[14px] md:text-[15px] lg:text-[18px]">
+                    Bekleyen
+                    İşlem</p>
+                <p
+                    class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
+                    72</p>
             </div>
         </div>
         <!-- Tab Graph  -->
@@ -93,25 +97,25 @@
 
 
 <script setup lang="ts">
-import {ref} from 'vue'
-import type {Ref} from 'vue'
+import { ref } from 'vue';
+import type { Ref } from 'vue';
 // @ts-ignore
 import VueApexCharts from 'vue3-apexcharts';
 
 const chartOptions: Ref<any> = ref({
-  chart: {
-    id: "uygulama-islem-grafik",
-  },
-  xaxis: {
-    categories: ['9AM', '12PM', '15PM', '18PM', '19PM'],
-  },
+    chart: {
+        id: "uygulama-islem-grafik",
+    },
+    xaxis: {
+        categories: ['9AM', '12PM', '15PM', '18PM', '19PM'],
+    },
 });
 
 const series: Ref<any[]> = ref([
-  {
-    name: "",
-    data: [30, 45, 60, 75, 90, 105, 120],
-  },
+    {
+        name: "",
+        data: [30, 45, 60, 75, 90, 105, 120],
+    },
 
 ]);
 </script>

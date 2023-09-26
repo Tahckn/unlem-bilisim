@@ -13,11 +13,17 @@
             </div>
         </div>
     </div>
-    <div class="mx-auto w-full px-[10px] md:px-[20px] py-[20px] shadow-sm rounded-[12px] flex flex-col gap-y-[20px]">
+    <!-- Application section  -->
+    <div v-if="!isLoading"
+        class="mx-auto w-full px-[10px] md:px-[20px] py-[20px] shadow-sm rounded-[12px] flex flex-col gap-y-[20px]">
         <!-- Cards -->
         <div class="grid grid-cols-1 gap-y-[30px] md:grid-cols-2 lg:grid-cols-3 gap-x-[30px]">
-            <div v-for="i in 3" :key="i">
-                <AppsAvatarCard :id="i"/>
+            <div v-for="application in applications" :key="application.id">
+                <AppsAvatarCard :id="application.id" :application="getApplicationById(application.id)" />
+            </div>
+            <!-- Add Application  -->
+            <div>
+                <AppsAddApplicationWidget />
             </div>
         </div>
         <!-- Footer  -->
@@ -62,15 +68,41 @@
             </div>
         </div>
     </div>
+    <div v-if="isLoading" class="w-full h-full flex items-center justify-center">
+        <div class="border-gray-300 h-10 w-10 animate-spin rounded-full border-4 border-t-primary" />
+    </div>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import AppsAvatarCard from '../AppsAvatarCard.vue';
-import { getApplications, createApplication, login } from '@/api';
+import AppsAddApplicationWidget from '../widgets/AppsAddApplicationWidget.vue';
+import { getApplications, getApplicationsWithRetry } from '@/api';
 
-// const applications = await getApplications();
-// console.log('Applications:', applications);
+interface Application {
+    id: string;
+}
 
+const isLoading = ref(false);
+const applications = ref<Application[]>([]);
+
+const getApplicationById = (appId: string) => {
+    return applications.value.find(app => app.id === appId);
+};
+
+onMounted(async () => {
+    // Fetch the applications data when the component is mounted
+    try {
+        isLoading.value = true;
+        const data = await getApplicationsWithRetry();
+        applications.value = data.data;
+        console.log('Applications:', applications.value);
+    } catch (error) {
+        console.error('Error:', error);
+    } finally {
+        isLoading.value = false;
+    }
+});
 
 // interface ApplicationData {
 //     app_key: string;
