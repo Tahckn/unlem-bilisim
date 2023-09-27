@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 // API URLs and Keys
 const apiUrl = 'http://gl-apps.unlemcloud.com/api';
@@ -39,7 +40,6 @@ async function login() {
       const token = response.data.extra.token;
       setAuthToken(token);
 
-      console.log('Token:', token);
       return token;
     } else {
       console.error('Login API error:', response.data.errorMessage);
@@ -51,90 +51,51 @@ async function login() {
   }
 }
 
-// goint to delete after api fix
-export async function getApplicationsWithRetry(maxRetries = 5) {
+// fetch application lista
+export async function getApplications() {
+  let response; // Define the response variable outside the try-catch block
+  let router = useRouter();
+  try {
+    let token = getAuthToken();
 
-  let retries = 0;
+    if (!token) {
+      token = await login();
+    }
 
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization' : `Bearer ${token}`,
+    };
 
-  while (retries < maxRetries) {
+    // Check if token expired
     try {
-      let token = getAuthToken();
-
-      if (!token) {
-        token = await login();
-      }
-
-      const headers = {
-        'UB-App': 'applications',
-        'Authorization': `Bearer ${token}`,
-      };
-
-      const response = await axios.get(`${apiUrl}/applications?limit=25`, {
+      response = await axios.get(`${apiUrl}/applications?limit=25`, {
         params: {
           app_key: appKey,
           domain: domain,
         },
         headers: headers,
       });
-
-      if (response.status === 200) {
-        const applications = response.data.extra;
-        return applications;
-      } else {
-        console.error('API hatası:', response.data.errorMessage);
-        throw new Error(response.data.errorMessage);
-      }
     } catch (error) {
-      console.error('API isteği sırasında bir hata oluştu:', error);
-      retries++;
-      if (retries < maxRetries) {
-        console.log(`Retrying... (Attempt ${retries}/${maxRetries})`);
-      } else {
-        throw error; // Maximum retries reached
+      if (error.response.status === 401) {
+        router.push('/login');
+        return;
       }
     }
-  }
 
-  throw new Error(`Maximum retries (${maxRetries}) reached. Unable to get data.`);
+    if (response.data.error === 0) {
+      const applications = response.data.extra;
+      return applications;
+    } else {
+      console.error('API hatası:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('API isteği sırasında bir hata oluştu:', error);
+    throw error;
+  }
 }
 
-//  TODO change this func after api fix 
-
-// export async function getApplications() {
-//   try {
-//     let token = getAuthToken();
-
-//     if (!token) {
-//       token = await login();
-//     }
-
-//     const headers = {
-//       'UB-App': 'applications',
-//       'Authorization':`Bearer ${token}`,
-//     };
-
-//     const response = await axios.get(`${apiUrl}/applications?limit=25`, {
-//       params: {
-//         app_key: appKey,
-//         domain: domain,
-//       },
-//       headers: headers,
-//     });
-
-//     if (response.data.error === 0) {
-//       const applications = response.data.extra;
-//       console.log('Uygulamalar:', applications);
-//       return applications;
-//     } else {
-//       console.error('API hatası:', response.data.errorMessage);
-//       throw new Error(response.data.errorMessage);
-//     }
-//   } catch (error) {
-//     console.error('API isteği sırasında bir hata oluştu:', error);
-//     throw error;
-//   }
-// }
 
 // Get App Detils
 export async function getAppDetailsById(id: any) {
@@ -158,7 +119,6 @@ export async function getAppDetailsById(id: any) {
 
     if (response.data.error === 0) {
       const appDetails = response.data.extra;
-      console.log('Application Details:', appDetails);
       return appDetails;
     } else {
       console.error('API hatası:', response.data.errorMessage);

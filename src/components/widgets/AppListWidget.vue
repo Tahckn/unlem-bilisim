@@ -18,8 +18,8 @@
         class="mx-auto w-full px-[10px] md:px-[20px] py-[20px] shadow-sm rounded-[12px] flex flex-col gap-y-[20px]">
         <!-- Cards -->
         <div class="grid grid-cols-1 gap-y-[30px] md:grid-cols-2 lg:grid-cols-3 gap-x-[30px]">
-            <div v-for="application in applications" :key="application.id">
-                <AppsAvatarCard :id="application.id" :application="getApplicationById(application.id)" />
+            <div v-for="app in application" :key="app.id">
+                <AppsAvatarCard :id="app.id" :application="sendApplicationById(app.id)" />
             </div>
             <!-- Add Application  -->
             <div>
@@ -74,71 +74,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { computed } from 'vue';
 import AppsAvatarCard from '../AppsAvatarCard.vue';
 import AppsAddApplicationWidget from '../widgets/AppsAddApplicationWidget.vue';
-import { getApplications, getApplicationsWithRetry } from '@/api';
+import { useApplicationsStore } from '@/stores/applicationStore';
+const store = useApplicationsStore();
 
-interface Application {
-    id: string;
-}
+const isLoading = computed(() => store.isLoading);
+const application = computed(() => store.applications);
 
-const isLoading = ref(false);
-const applications = ref<Application[]>([]);
-
-const getApplicationById = (appId: string) => {
-    return applications.value.find(app => app.id === appId);
+const sendApplicationById = (appId: string) => {
+    return application.value.find(app => app.id === appId);
 };
-
-onMounted(async () => {
-    // Fetch the applications data when the component is mounted
-    try {
-        isLoading.value = true;
-        const data = await getApplicationsWithRetry();
-        applications.value = data.data;
-        console.log('Applications:', applications.value);
-    } catch (error) {
-        console.error('Error:', error);
-    } finally {
-        isLoading.value = false;
-    }
-});
-
-// interface ApplicationData {
-//     app_key: string;
-//     name: string;
-//     domain: string;
-//     icon?: string; // Optional property
-//     status: boolean;
-//     private: boolean;
-//     healthCheck: boolean;
-//     healthCheckLink: string;
-//     healthCheckPeriod: number;
-// }
-
-// const exampleApplicationData: ApplicationData = {
-//     app_key: 'applications',
-//     name: 'Uygulamalar',
-//     domain: 'https://gl-apps.unlembilisim.com',
-//     icon: 'https://gl-apps.unlembilisim.com/icon.png',
-//     status: true,
-//     private: true,
-//     healthCheck: true,
-//     healthCheckLink: 'https://gl-apps.unlembilisim.com/health-check',
-//     healthCheckPeriod: 3600,
-// };
-
-// createApplication(exampleApplicationData)
-//     .then((newApplication) => {
-//         console.log('New Application Created:', newApplication);
-//     })
-//     .catch((error) => {
-//         console.error('Error:', error);
-//     });
-
-
-
-
 
 </script>
 

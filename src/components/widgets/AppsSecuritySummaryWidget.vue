@@ -37,7 +37,7 @@
                     İşlem</p>
                 <p
                     class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
-                    36.966
+                    {{ succesfulOperations }}
                 </p>
             </div>
             <!-- Basarisiz islem  -->
@@ -50,7 +50,7 @@
                     İşlem</p>
                 <p
                     class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
-                    291
+                    {{ failedOperations }}
                 </p>
             </div>
             <!-- Bir sonraki islem  -->
@@ -89,6 +89,8 @@
             <div class="w-full h-auto">
                 <div id="chart">
                     <VueApexCharts type="area" height="241" :options="chartOptions" :series="series"></VueApexCharts>
+                    {{ application.healthChecks[0].statusCode }}
+
                 </div>
             </div>
         </div>
@@ -97,11 +99,43 @@
 
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import type { Ref } from 'vue';
 // @ts-ignore
 import VueApexCharts from 'vue3-apexcharts';
+import { useApplicationsStore } from '@/stores/applicationStore';
 
+const store = useApplicationsStore();
+
+const isLoading = computed(() =>
+    store.isLoading
+);
+
+const application = computed(() =>
+    store.applicationById
+);
+
+
+// Successful Operations (initialize as 0)
+const succesfulOperations = ref(0)
+const failedOperations = ref(0)
+
+
+if (!isLoading) {
+    // succesful Operations
+    for (const healthCheck of application.healthChecks) {
+        if (healthCheck.statusCode === "200") {
+            succesfulOperations.value++;
+        } else if (
+            healthCheck.statusCode === 401) {
+            failedOperations.value++;
+        }
+
+    }
+}
+
+
+//Chart Table options
 const chartOptions: Ref<any> = ref({
     chart: {
         id: "uygulama-islem-grafik",
