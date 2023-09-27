@@ -89,8 +89,7 @@
             <div class="w-full h-auto">
                 <div id="chart">
                     <VueApexCharts type="area" height="241" :options="chartOptions" :series="series"></VueApexCharts>
-                    {{ application.healthChecks[0].statusCode }}
-
+                    {{ application.healthChecks }}
                 </div>
             </div>
         </div>
@@ -117,8 +116,8 @@ const application = computed(() =>
 
 
 // Successful Operations (initialize as 0)
-const succesfulOperations = ref(0)
-const failedOperations = ref(0)
+let succesfulOperations = ref(0)
+let failedOperations = ref(0)
 
 
 if (!isLoading) {
