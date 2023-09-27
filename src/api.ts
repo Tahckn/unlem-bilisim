@@ -64,7 +64,7 @@ export async function getApplications() {
 
     const headers = {
       'UB-App': 'applications',
-      'Authorization' : `Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
     };
 
     // Check if token expired
@@ -145,17 +145,96 @@ interface ApplicationData {
 }
 
 // Create Application
-export async function createApplication(applicationData: ApplicationData) {
+export async function createApplications(applicationData: ApplicationData) {
   try {
-    const response = await axios.put(`${apiUrl}/applications/add`, applicationData);
+    let token = getAuthToken();
 
-    if (response.status !== 200) {
+    if (!token) {
+      token = await login();
+    }
+
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const response = await axios.put(`${apiUrl}/applications/add`, applicationData,{
+      headers:headers
+    });
+
+    if (response.data.error !== 0) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
     return response.data;
   } catch (error) {
     console.error('Error creating application:', error);
+    throw error;
+  }
+}
+
+//edit Application
+export async function editApplication(id: string, applicationData: ApplicationData) {
+  try {
+    let token = getAuthToken();
+
+    if (!token) {
+      token = await login();
+    }
+
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const editUrl = `${apiUrl}/applications/edit/${id}`; // Replace with your actual edit endpoint URL
+
+    const response = await axios.post(editUrl, applicationData, {
+      headers: headers,
+    });
+
+    if (response.data.error === 0) {
+      const editedApplication = response.data.extra;
+      return editedApplication;
+    } else {
+      console.error('API hatası:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('API isteği sırasında bir hata oluştu:', error);
+    throw error;
+  }
+}
+
+//add connection
+export async function addConnection(connectionData) {
+  try {
+    let token = getAuthToken();
+
+    if (!token) {
+      token = await login();
+    }
+
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const addConnectionUrl = `${apiUrl}/connection/add`; // Replace with your actual endpoint URL
+
+    const response = await axios.put(addConnectionUrl, connectionData, {
+      headers: headers,
+    });
+
+    if (response.data.error === 0) {
+      const addedConnection = response.data.extra;
+      return addedConnection;
+    } else {
+      console.error('API hatası:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('API isteği sırasında bir hata oluştu:', error);
     throw error;
   }
 }

@@ -37,7 +37,7 @@
                     İşlem</p>
                 <p
                     class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
-                    {{ succesfulOperations }}
+                    {{ successfulOperations }}
                 </p>
             </div>
             <!-- Basarisiz islem  -->
@@ -58,11 +58,10 @@
                 class=" md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
                 <p
                     class="text-warning font-semibold leading-[18px] tracking-[-0.18px] text-[14px] md:text-[15px] lg:text-[18px]">
-                    Bekleyen
-                    İşlem</p>
+                    Bekleyen İşlemler</p>
                 <p
                     class="text-[#3F4254] text-[16px] md:text-[24px] lg:text-[38px] font-semibold md:leading-[38px] tracking-[-0.76px]">
-                    72</p>
+                    {{ waitingJobs }}</p>
             </div>
         </div>
         <!-- Tab Graph  -->
@@ -89,7 +88,6 @@
             <div class="w-full h-auto">
                 <div id="chart">
                     <VueApexCharts type="area" height="241" :options="chartOptions" :series="series"></VueApexCharts>
-                    {{ application.healthChecks }}
                 </div>
             </div>
         </div>
@@ -98,41 +96,42 @@
 
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted, watch } from 'vue';
 import type { Ref } from 'vue';
 // @ts-ignore
 import VueApexCharts from 'vue3-apexcharts';
 import { useApplicationsStore } from '@/stores/applicationStore';
 
 const store = useApplicationsStore();
+const application = ref(null);
 
 const isLoading = computed(() =>
     store.isLoading
 );
 
-const application = computed(() =>
-    store.applicationById
-);
+onMounted(async () => {
+    application.value = await store.applicationById;
+});
 
-
+const healthChecks = computed(() => application.value?.healthChecks || []);
 // Successful Operations (initialize as 0)
-let succesfulOperations = ref(0)
-let failedOperations = ref(0)
+const successfulOperations = ref(0);
+const failedOperations = ref(0);
+const waitingJobs = ref(0);
 
-
-if (!isLoading) {
-    // succesful Operations
-    for (const healthCheck of application.healthChecks) {
+// check operations.
+watch(healthChecks, () => {
+    successfulOperations.value = 0;
+    failedOperations.value = 0;
+    waitingJobs.value = 0
+    for (const healthCheck of healthChecks.value) {
         if (healthCheck.statusCode === "200") {
-            succesfulOperations.value++;
-        } else if (
-            healthCheck.statusCode === 401) {
+            successfulOperations.value++;
+        } else if (healthCheck.statusCode === "401") {
             failedOperations.value++;
-        }
-
+        }else (waitingJobs.value++)
     }
-}
-
+}, { immediate: true }); // The immediate option ensures that the watcher runs initially
 
 //Chart Table options
 const chartOptions: Ref<any> = ref({

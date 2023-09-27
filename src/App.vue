@@ -24,6 +24,7 @@ watchEffect(() => {
     <Layout>
       <!-- Content inside the layout -->
       <RouterView />
+      <notifications position="bottom left"/>
     </Layout>
   </div>
 </template>

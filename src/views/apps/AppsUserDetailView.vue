@@ -164,7 +164,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouterView, useRoute, RouterLink, useRouter } from 'vue-router';
+import { RouterView, useRoute, RouterLink } from 'vue-router';
 import { getAppDetailsById } from '@/api';
 import { onMounted, ref } from 'vue';
 import moment from 'moment';
@@ -174,9 +174,9 @@ const isLoading = ref(false);
 
 
 // get id from route
-const router = useRouter();
-const id = router.currentRoute.value.params.id;
-const application = ref<Application | null>(null)
+const route = useRoute();
+const id = route.params.id
+const application = ref<Application | null>(null);
 
 
 // Define TypeScript interfaces
@@ -184,7 +184,7 @@ interface Application {
     // Define your application properties here
     id: number;
     name: string;
-    domain : string
+    domain: string;
     healthChecks: HealthCheck[];
 }
 
@@ -228,8 +228,6 @@ const getLastRequest = () => {
     } else return '-';
 };
 
-
-const route = useRoute();
 
 const routes = {
     GeneralOverview: 'Genel Bakış',
