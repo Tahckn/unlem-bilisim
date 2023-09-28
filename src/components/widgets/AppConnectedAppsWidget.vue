@@ -40,16 +40,19 @@
                                         <img class="w-[14px] h-[14px]" src="/assets/icons/attention.svg" alt="attention">
                                     </div>
                                     <div>
-                                        <input
-                                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md "
-                                            placeholder="Uygulama Seçiniz." type="text">
+                                        <select id="countries" v-model="selectedApplicationId"
+                                            class="text-[#7E8299] w-full md:px-[12px] px-[8px] text-[12px] md:text-[14px] py-[9px] md:py-[13px] outline-none ring-0 bg-[#F1F1F2] rounded-md">
+                                            <option v-for="app in applications" :key="app.id" :value="app.id">
+                                                {{ app.name }}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div
                                     class="pt-[10px]  border-t border-[#E1E3EA] items-center px-[20px] flex gap-x-[10px] justify-end">
                                     <button @click="closeNew"
                                         class="text-[#7E8299] rounded-md bg-[#F9F9F9] md:text-[13px] font-semibold text-[11px] leading-[12px] md:leading-[14px] px-[14px] py-[10px] md:px-[16px] md:py-[12px]">Kapat</button>
-                                    <button
+                                    <button @click="addConnections"
                                         class="text-white rounded-md bg-primary md:text-[13px] font-semibold text-[11px] leading-[12px] md:leading-[14px] px-[14px] py-[10px] md:px-[16px] md:py-[12px]">Ekle</button>
                                 </div>
                             </div>
@@ -67,40 +70,53 @@
                     <img src="/assets/icons/attention.svg" alt="attention">
                 </button>
             </div>
-            <!-- Definition of Service  -->
-            <div class="w-full flex items-center px-[20px]">
-                <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">
-                    Definition of Service</p>
-                <button
-                    class="text-[#A1A5B7] bg-[#F9F9F9] text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px] items-center flex ml-auto px-[14px] py-[10px] md:px-[12px] md:py-[13px] rounded-md gap-x-[10px]">
-                    İşlem
-                    <img src="/assets/icons/arrow-down.svg" alt="arrow-down">
-                </button>
-            </div>
-            <!-- Localization Service  -->
-            <div class="w-full flex items-center px-[20px]">
-                <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">
-                    Localization Service</p>
-                <button
-                    class="text-[#A1A5B7] bg-[#F9F9F9] text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px] items-center flex ml-auto px-[14px] py-[10px] md:px-[12px] md:py-[13px] rounded-md gap-x-[10px]">
-                    İşlem
-                    <img src="/assets/icons/arrow-down.svg" alt="arrow-down">
-                </button>
+            <div v-for="app in apiApplications" :key="app.id">
+                <!-- Definition of Service  -->
+                {{ app.id }}
+                <div class="w-full flex items-center justify-between px-[20px]">
+                    <p class="text-[#7E8299] md:text-[14px] font-semibold text-[11px] leading-[12px] md:leading-[14px]">
+                        {{ app.name }}</p>
+                    <div class="flex flex-col gap-y-[2px] items-center">
+                        <button @click="toggleButton(app.id)"
+                            class="text-[#A1A5B7] bg-[#F9F9F9] relative text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px] items-center flex ml-auto px-[14px] py-[10px] md:px-[12px] md:py-[13px] rounded-md gap-x-[10px]">
+                            İşlem
+                            <img src="/assets/icons/arrow-down.svg" alt="arrow-down">
+                        </button>
+                        <transition>
+                            <button v-if="btnActive" @click="removeConnection(app.id)"
+                                class="text-white w-full justify-center bg-danger text-[11px] leading-[12px] md:leading-[14px] font-semibold md:text-[13px] items-center flex ml-auto px-[14px] py-[10px] md:px-[12px] md:py-[13px] rounded-md gap-x-[10px]">
+                                Sil
+                            </button>
+                        </transition>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
+import { useApplicationsStore } from '@/stores/applicationStore';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
+const store = useApplicationsStore();
 const isActive = ref(false);
 const isActiveBackdrop = ref(false);
+const selectedApplicationId = ref(null);
+const btnActive = ref(false);
+
+
+
 
 const openNew = () => {
     isActive.value = true;
     isActiveBackdrop.value = true; // Show the backdrop
 };
+
+const apiApplications = computed(() => store.apiApplications);
+const applications = computed(() => store.applications);
 
 onMounted(() => {
     document.addEventListener('click', handleClickOutside);
@@ -122,6 +138,32 @@ const handleClickOutside = (event: any) => {
     }
 };
 
+
+const removeConnection = async (appId) => {
+    try {
+        await store.deleteConnection(appId);
+    } catch (error) {
+        console.error('silme hatasi', error);
+    }
+};
+
+
+const toggleButton = (id) => {
+    btnActive.value = !btnActive.value;
+};
+
+const addConnections = async () => {
+    try {
+        const values = {
+            applicationId: selectedApplicationId.value,
+            sourceApplicationId: route.params.id
+        };
+        await store.addConnection(values);
+    } catch (error) {
+        console.error('Uygulama eklenirken hata olustu');
+    }
+
+};
 
 
 

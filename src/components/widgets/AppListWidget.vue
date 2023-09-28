@@ -22,7 +22,7 @@
                 <AppsAvatarCard :id="app.id" :application="sendApplicationById(app.id)" />
             </div>
             <!-- Add Application  -->
-            <div>
+            <div class="min-h-[345px]">
                 <AppsAddApplicationWidget />
             </div>
         </div>

@@ -5,7 +5,7 @@
                 <main class="p-[20px] w-full overflow-auto gap-y-[10px] flex flex-col border border-[#F1F1F2] rounded-xl">
                     <!-- Avatar Section  -->
                     <section
-                        class="pt-[20px] px-[20px] overflow-hidden flex-shrink-0 justify-between sm:gap-y-[23px] md:gap-y-[45px] w-full flex flex-col h-[232px] shadow-sm border border-[#F1F1F2] rounded-xl">
+                        class="pt-[20px] px-[20px] overflow-hidden flex-shrink-0 justify-between sm:gap-y-[23px] md:gap-y-[45px] w-full flex flex-col h-[232px] shadow-sm border border-[#F1F1F2] rounded-xl relative">
                         <!-- Info Section  -->
                         <div class="flex gap-x-[25px] md:items-start relative">
                             <!-- image  -->
@@ -22,9 +22,18 @@
                             <!-- details -->
                             <div class="flex flex-col">
                                 <!-- User Name  -->
-                                <h2
-                                    class="text-[#181C32] text-[14px] md:text-[18px] leading-[14px] font-semibold md:leading-[18px] pb-[10px] tracking-[-0.18px]">
-                                    {{ application?.name }}</h2>
+                                <div class="flex">
+                                    <h2
+                                        class="text-[#181C32] text-[14px] md:text-[18px] leading-[14px] font-semibold md:leading-[18px] pb-[10px] tracking-[-0.18px]">
+                                        {{ application?.name }}
+                                    </h2>
+
+                                    <p @click="removeApplication"
+                                        class="bg-danger font-semibold cursor-pointer text-[14px] leading-[14px] text-white rounded-lg hover:bg-danger/70 px-3 py-2 absolute top-[40%] sm:top-[55%] sm:right-[3%] md:top-0 md:right-0 right-0">
+                                        sil
+                                    </p>
+
+                                </div>
                                 <!-- Items  -->
                                 <div
                                     class="flex gap-y-[2px] flex-shrink-0 flex-col items-start md:items-center md:flex-row gap-x-[15px] pb-[20px]">
@@ -166,16 +175,59 @@
 <script setup lang="ts">
 import { RouterView, useRoute, RouterLink } from 'vue-router';
 import { getAppDetailsById } from '@/api';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { notify } from '@kyvg/vue3-notification';
 import moment from 'moment';
+import { useApplicationsStore } from '@/stores/applicationStore';
+const route = useRoute();
+const store = useApplicationsStore();
+const successMessage = computed(() => store.successMessage);
+const error = computed(() => store.error);
+
+//notify when update succesful
+watch(successMessage, (newValue) => {
+    if (newValue) {
+        notify({
+            type: "success",
+            title: "Güncelleme",
+            text: "Uygulama Bilgileri Başarıyla Güncellendi",
+        });
+    }
+});
+
+//notify when update succesful
+watch(error, (newValue) => {
+    if (newValue) {
+        notify({
+            type: "warn",
+            title: "Güncelleme",
+            text: "Uygulama Bilgileri Güncellenemedi",
+        });
+    }
+});
+
+// Function to update application details
+const removeApplication = async () => {
+    try {
+        const id = route.params.id;
+        // Call the delete function from the store
+        await store.deleteApplication(id);
+
+        // Optionally, you can redirect or show a success message here
+    } catch (error) {
+        console.error("Error updating application details:", error);
+        // Handle the error, show a message, or perform other actions as needed
+    }
+};
+
+
 
 // loading state
 const isLoading = ref(false);
 
 
 // get id from route
-const route = useRoute();
-const id = route.params.id
+const id = route.params.id;
 const application = ref<Application | null>(null);
 
 

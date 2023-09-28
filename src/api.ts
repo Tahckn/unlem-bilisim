@@ -129,6 +129,38 @@ export async function getAppDetailsById(id: any) {
     throw error;
   }
 }
+// Get Api applications
+export async function getApiApplications(id: any) {
+  try {
+    let token = getAuthToken();
+
+    if (!token) {
+      token = await login();
+    }
+
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const apiURL = `${apiUrl}/applications/options/${id}`;
+
+    const response = await axios.get(apiURL, {
+      headers: headers,
+    });
+
+    if (response.data.error === 0) {
+      const appDetails = response.data.extra;
+      return appDetails;
+    } else {
+      console.error('API hatası:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('API isteği sırasında bir hata oluştu:', error);
+    throw error;
+  }
+}
 
 
 // App interface 
@@ -158,8 +190,8 @@ export async function createApplications(applicationData: ApplicationData) {
       'Authorization': `Bearer ${token}`,
     };
 
-    const response = await axios.put(`${apiUrl}/applications/add`, applicationData,{
-      headers:headers
+    const response = await axios.put(`${apiUrl}/applications/add`, applicationData, {
+      headers: headers
     });
 
     if (response.data.error !== 0) {
@@ -207,7 +239,7 @@ export async function editApplication(id: string, applicationData: ApplicationDa
 }
 
 //add connection
-export async function addConnection(connectionData) {
+export async function addConnect(connectionData) {
   try {
     let token = getAuthToken();
 
@@ -220,7 +252,7 @@ export async function addConnection(connectionData) {
       'Authorization': `Bearer ${token}`,
     };
 
-    const addConnectionUrl = `${apiUrl}/connection/add`; // Replace with your actual endpoint URL
+    const addConnectionUrl = `${apiUrl}/connection/add`;
 
     const response = await axios.put(addConnectionUrl, connectionData, {
       headers: headers,
@@ -229,6 +261,72 @@ export async function addConnection(connectionData) {
     if (response.data.error === 0) {
       const addedConnection = response.data.extra;
       return addedConnection;
+    } else {
+      console.error('API hatası:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('API isteği sırasında bir hata oluştu:', error);
+    throw error;
+  }
+}
+//delete connection
+export async function deleteConnect(id: any) {
+  try {
+    let token = getAuthToken();
+
+    if (!token) {
+      token = await login();
+    }
+
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const deleteConnectionUrl = `${apiUrl}/connection/delete/${id}`;
+
+    const response = await axios.delete(deleteConnectionUrl, {
+      headers: headers,
+    });
+
+    if (response.data.error === 0) {
+      return "Connection deleted successfully";
+
+    } else {
+      console.error('API hatası:', response.data.errorMessage);
+      throw new Error(response.data.errorMessage);
+    }
+  } catch (error) {
+    console.error('API isteği sırasında bir hata oluştu:', error);
+    throw error;
+  }
+}
+
+// Delete Application
+export async function removeApplication(id: any) {
+  try {
+    let token = getAuthToken();
+
+    if (!token) {
+      token = await login();
+    }
+
+    const headers = {
+      'UB-App': 'applications',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const deleteUrl = `${apiUrl}/applications/delete/${id}`; // Replace with your actual delete endpoint URL
+
+    const response = await axios.delete(deleteUrl, {
+      headers: headers,
+    });
+
+
+    if (response.data.error === 0) {
+      return "Application deleted successfully";
+
     } else {
       console.error('API hatası:', response.data.errorMessage);
       throw new Error(response.data.errorMessage);

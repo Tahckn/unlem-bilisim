@@ -27,10 +27,11 @@
             </div>
         </div>
         <!-- Tab Status -->
-        <div class="w-full flex flex-col gap-y-[10px] md:gap-y-[0] md:flex-row justify-between items-center">
+        <div
+            class="w-full flex flex-shrink-0 whitespace-nowrap flex-col gap-y-[10px] md:gap-y-[0] md:flex-row justify-between items-center">
             <!-- Basarili islem  -->
             <div
-                class="md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
+                class="md:w-auto w-full md:px-[30px] lg:px-[50px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
                 <p
                     class="text-success font-semibold leading-[18px] tracking-[-0.18px] text-[14px] md:text-[15px] lg:text-[18px]">
                     Başarılı
@@ -43,7 +44,7 @@
             <!-- Basarisiz islem  -->
 
             <div
-                class=" md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
+                class=" md:w-auto w-full md:px-[30px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
                 <p
                     class="text-danger font-semibold leading-[18px] tracking-[-0.18px] text-[14px] md:text-[15px] lg:text-[18px]">
                     Başarısız
@@ -55,7 +56,7 @@
             </div>
             <!-- Bir sonraki islem  -->
             <div
-                class=" md:w-auto w-full md:px-[35px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
+                class=" md:w-auto w-full md:px-[30px] lg:px-[60px] rounded-[6px] border border-[#D8D8E5] border-dashed flex flex-col gap-y-[2px] lg:gap-y-[12px] py-[5px] md:py-[20px] justify-center items-center">
                 <p
                     class="text-warning font-semibold leading-[18px] tracking-[-0.18px] text-[14px] md:text-[15px] lg:text-[18px]">
                     Bekleyen İşlemler</p>
@@ -87,7 +88,7 @@
             <!-- Graph  -->
             <div class="w-full h-auto">
                 <div id="chart">
-                    <VueApexCharts type="area" height="241" :options="chartOptions" :series="series"></VueApexCharts>
+                    <VueApexCharts type="area" height="241" :options="chartOptions" :series="chartSeries"></VueApexCharts>
                 </div>
             </div>
         </div>
@@ -97,10 +98,10 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, watch } from 'vue';
-import type { Ref } from 'vue';
 // @ts-ignore
 import VueApexCharts from 'vue3-apexcharts';
 import { useApplicationsStore } from '@/stores/applicationStore';
+import moment from 'moment';
 
 const store = useApplicationsStore();
 const application = ref(null);
@@ -118,37 +119,84 @@ const healthChecks = computed(() => application.value?.healthChecks || []);
 const successfulOperations = ref(0);
 const failedOperations = ref(0);
 const waitingJobs = ref(0);
+const chartData = ref([]);
+const chartDataHeader = ref([]);
 
 // check operations.
 watch(healthChecks, () => {
+    // Reset counts and waitingJobs
     successfulOperations.value = 0;
     failedOperations.value = 0;
-    waitingJobs.value = 0
+    waitingJobs.value = 0;
+    chartData.value = [];
+    chartDataHeader.value = [];
+
+    // Check if application and healthChecks are available
+    if (application.value && healthChecks.value.length > 0) {
+        const firstHealthCheck = healthChecks.value[0];
+
+        // Calculate the next health check time
+        const nextHealthCheckTime = moment(firstHealthCheck.endedAt, "YYYY-MM-DD HH:mm:ss")
+            .add(application.value.healthCheckPeriod, "seconds")
+            .format("DD-MM-YYYY HH:mm:ss");
+
+        // Set waitingJobs to the calculated time
+        waitingJobs.value = nextHealthCheckTime;
+    }
+
+    // Count successful and failed operations
     for (const healthCheck of healthChecks.value) {
         if (healthCheck.statusCode === "200") {
             successfulOperations.value++;
         } else if (healthCheck.statusCode === "401") {
             failedOperations.value++;
-        }else (waitingJobs.value++)
+        }
     }
+
+    for (const healthCheck of healthChecks.value) {
+        const timings = Number(healthCheck.timing);
+        const headers = moment(healthCheck.createdAt).format("DD-MM-YYYY HH:mm:ss");
+
+        chartDataHeader.value.push(headers);
+        chartData.value.push(timings);
+    }
+
+
 }, { immediate: true }); // The immediate option ensures that the watcher runs initially
 
 //Chart Table options
-const chartOptions: Ref<any> = ref({
+const chartOptions = ref({
     chart: {
-        id: "uygulama-islem-grafik",
+        id: 'uygulama-islem-grafik',
     },
     xaxis: {
-        categories: ['9AM', '12PM', '15PM', '18PM', '19PM'],
+        categories: chartDataHeader,
+        tickPlacement:'on',
+        labels: {
+            show: false
+        }
     },
+    dataLabels: {
+        enabled: false
+    },
+    dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2
+    },
+    toolbar: {
+        show: false
+    }
 });
 
-const series: Ref<any[]> = ref([
+const chartSeries = ref([
     {
-        name: "",
-        data: [30, 45, 60, 75, 90, 105, 120],
+        name: 'Cevaplama Zamaı', // You can change the name as per your data
+        data: chartData,
     },
-
 ]);
 </script>
 

@@ -3,7 +3,6 @@
     <div class="max-w-md w-full bg-white rounded shadow-md border border-[#F1F1F2] p-6 space-y-4">
       <div class="mb-4">
         <p class="text-gray-600">Sign In</p>
-        <h2 class="text-xl font-bold">Join our community</h2>
       </div>
       <div>
         <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600"
@@ -20,8 +19,6 @@
       </div>
       <div class="flex items-center justify-between">
         <div class="flex flex-row items-center">
-          <input type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-          <label for="comments" class="ml-2 text-sm font-normal text-gray-600">Remember me</label>
         </div>
       </div>
     </div>
